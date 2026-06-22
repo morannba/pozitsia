@@ -143,11 +143,32 @@
 <div class="form-section">
   <div class="form-title">רוצה להיות ראשון לדעת?</div>
   <div class="form-sub">נשיק בקרוב — השאר אימייל ונעדכן אותך</div>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS6EteBiPgkvbObd3RqSw3kNNLvxJSiUj-_4TKL9OMV5fncw/viewform" target="_blank" class="cta-btn">אני רוצה גישה</a>
+  <form action="https://formspree.io/f/mkolnzyz" method="POST" id="signup-form">
+    <div class="form-row">
+      <input type="email" name="email" id="email-input" placeholder="האימייל שלך" dir="ltr" required>
+      <button type="submit">אני רוצה גישה</button>
+    </div>
+  </form>
+  <div id="thanks" style="display:none; font-size:16px; color:#185FA5; font-weight:500; padding:1rem;">תודה! נעדכן אותך ראשון כשנשיק 🎉</div>
   <div class="note">ללא ספאם. ביטול בכל עת.</div>
 </div>
 
 <footer>© 2024 פוזיציה</footer>
+
+<script>
+var form = document.getElementById('signup-form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var data = new FormData(form);
+  fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    .then(function(r) {
+      if (r.ok) {
+        form.style.display = 'none';
+        document.getElementById('thanks').style.display = 'block';
+      }
+    });
+});
+</script>
 
 </body>
 </html>
