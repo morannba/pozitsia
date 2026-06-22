@@ -143,27 +143,11 @@
 <div class="form-section">
   <div class="form-title">רוצה להיות ראשון לדעת?</div>
   <div class="form-sub">נשיק בקרוב — השאר אימייל ונעדכן אותך</div>
-  <div class="form-row">
-    <input type="email" id="email-input" placeholder="האימייל שלך" dir="ltr">
-    <button onclick="handleSubmit()">אני רוצה גישה</button>
-  </div>
-  <div id="thanks">תודה! נעדכן אותך ראשון כשנשיק 🎉</div>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdS6EteBiPgkvbObd3RqSw3kNNLvxJSiUj-_4TKL9OMV5fncw/viewform" target="_blank" class="cta-btn">אני רוצה גישה</a>
   <div class="note">ללא ספאם. ביטול בכל עת.</div>
 </div>
 
 <footer>© 2024 פוזיציה</footer>
-
-<script>
-function handleSubmit() {
-  var inp = document.getElementById('email-input');
-  if (!inp.value || !inp.value.includes('@')) {
-    inp.style.borderColor = '#e24b4a';
-    return;
-  }
-  document.querySelector('.form-row').style.display = 'none';
-  document.getElementById('thanks').style.display = 'block';
-}
-</script>
 
 </body>
 </html>
