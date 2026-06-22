@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פוזיציה — אירוע אחד. כל המקורות. תחליט בעצמך.</title>
+  <meta name="description" content="פוזיציה מציגה את אותו אירוע כפי שמקורות חדשות שונים כיסו אותו. בלי פרשנות. בלי מסקנות. אתה רואה, אתה מחליט.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f9f9f7; color: #1a1a1a; }
+
+    header { text-align: center; padding: 3rem 1.5rem 1rem; }
+    .logo { font-size: 32px; font-weight: 700; color: #1a1a1a; letter-spacing: -1px; margin-bottom: 6px; }
+    .logo span { color: #185FA5; }
+    .tagline { font-size: 15px; color: #666; margin-bottom: 2.5rem; }
+    .headline { font-size: 26px; font-weight: 700; line-height: 1.4; max-width: 520px; margin: 0 auto 1rem; }
+    .sub { font-size: 16px; color: #555; line-height: 1.7; max-width: 460px; margin: 0 auto 2.5rem; }
+
+    .story-card {
+      max-width: 540px; margin: 0 auto 2.5rem;
+      border: 1px solid #e0e0e0; border-radius: 12px;
+      background: #fff; overflow: hidden;
+    }
+    .story-header { padding: 16px 18px; border-bottom: 1px solid #e0e0e0; }
+    .story-event { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+    .bias-bar-wrap { display: flex; border-radius: 4px; overflow: hidden; height: 7px; margin-bottom: 6px; }
+    .bar-l { background: #D4537E; }
+    .bar-c { background: #888; }
+    .bar-r { background: #185FA5; }
+    .bias-bar-labels { display: flex; justify-content: space-between; font-size: 11px; color: #888; }
+
+    .coverage-row { display: flex; align-items: stretch; border-bottom: 1px solid #f0f0f0; }
+    .coverage-row:last-of-type { border-bottom: none; }
+    .source-col { width: 95px; min-width: 95px; padding: 11px 14px; border-left: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: flex-end; }
+    .source-name { font-size: 12px; font-weight: 500; color: #666; text-align: right; }
+    .angle-col { flex: 1; padding: 11px 14px; display: flex; align-items: center; }
+    .angle-text { font-size: 13px; color: #1a1a1a; line-height: 1.5; text-align: right; }
+
+    .blindspot-row { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #fafafa; border-top: 1px solid #f0f0f0; }
+    .blindspot-label { font-size: 12px; color: #888; }
+    .blindspot-sources { font-size: 12px; color: #aaa; }
+
+    .stats-row { display: flex; gap: 12px; max-width: 540px; margin: 0 auto 3rem; }
+    .stat-card { flex: 1; padding: 16px 10px; border-radius: 10px; border: 1px solid #e0e0e0; background: #fff; text-align: center; }
+    .stat-num { font-size: 22px; font-weight: 700; color: #185FA5; margin-bottom: 4px; }
+    .stat-label { font-size: 12px; color: #666; line-height: 1.5; }
+
+    .form-section { background: #fff; border-top: 1px solid #e0e0e0; padding: 3rem 1.5rem; text-align: center; }
+    .form-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .form-sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
+    .form-row { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
+    .form-row input {
+      flex: 1; padding: 12px 16px; border-radius: 8px;
+      border: 1px solid #ccc; font-size: 15px;
+      font-family: 'Heebo', sans-serif;
+      text-align: right; color: #1a1a1a;
+    }
+    .form-row input:focus { outline: none; border-color: #185FA5; }
+    .form-row button {
+      padding: 12px 20px; border-radius: 8px; border: none;
+      background: #185FA5; color: #fff; font-size: 14px;
+      font-weight: 500; cursor: pointer; white-space: nowrap;
+      font-family: 'Heebo', sans-serif;
+    }
+    .form-row button:hover { background: #0C447C; }
+    .note { font-size: 12px; color: #aaa; margin-top: 10px; }
+    #thanks { display: none; font-size: 16px; color: #185FA5; font-weight: 500; padding: 1rem; }
+
+    footer { text-align: center; padding: 1.5rem; font-size: 12px; color: #bbb; }
+
+    @media (max-width: 480px) {
+      .headline { font-size: 22px; }
+      .stats-row { flex-direction: column; }
+      .form-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">פוזי<span>ציה</span></div>
+  <div class="tagline">אירוע אחד. כל המקורות. תחליט בעצמך.</div>
+  <h1 class="headline">לא מה קרה — איך כל אחד בחר לספר את זה</h1>
+  <p class="sub">פוזיציה מציגה את אותו אירוע כפי שמקורות שונים כיסו אותו. בלי פרשנות. בלי מסקנות. אתה רואה, אתה מחליט.</p>
+
+  <div class="story-card">
+    <div class="story-header">
+      <div class="story-event">הפגנה בתל אביב — אמש</div>
+      <div class="bias-bar-wrap">
+        <div class="bar-l" style="width:35%;"></div>
+        <div class="bar-c" style="width:40%;"></div>
+        <div class="bar-r" style="width:25%;"></div>
+      </div>
+      <div class="bias-bar-labels">
+        <span>שמאל 35%</span>
+        <span>מרכז 40%</span>
+        <span>ימין 25%</span>
+      </div>
+    </div>
+
+    <div class="coverage-row">
+      <div class="source-col"><span class="source-name">הארץ</span></div>
+      <div class="angle-col"><span class="angle-text">עשרות אלפים דרשו עסקה לשחרור החטופים</span></div>
+    </div>
+    <div class="coverage-row">
+      <div class="source-col"><span class="source-name">ישראל היום</span></div>
+      <div class="angle-col"><span class="angle-text">מפגינים חסמו כבישים מרכזיים בתל אביב</span></div>
+    </div>
+    <div class="coverage-row">
+      <div class="source-col"><span class="source-name">כאן חדשות</span></div>
+      <div class="angle-col"><span class="angle-text">הפגנה בכיכר הבימה, נאמו בני משפחות החטופים</span></div>
+    </div>
+    <div class="coverage-row">
+      <div class="source-col"><span class="source-name">ערוץ 14</span></div>
+      <div class="angle-col"><span class="angle-text">שיבושים נרחבים בתנועה סביב מרכז תל אביב</span></div>
+    </div>
+
+    <div class="blindspot-row">
+      <span style="font-size:14px;">👁️</span>
+      <span class="blindspot-label">לא כיסו:</span>
+      <span class="blindspot-sources">ערוץ 12, מאקו, גלובס</span>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">מקורות חדשות ישראליים</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">בלי</div>
+      <div class="stat-label">פרשנות או מסקנות מצדנו</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">מי</div>
+      <div class="stat-label">כיסה ומי בחר לא לכסות</div>
+    </div>
+  </div>
+</header>
+
+<div class="form-section">
+  <div class="form-title">רוצה להיות ראשון לדעת?</div>
+  <div class="form-sub">נשיק בקרוב — השאר אימייל ונעדכן אותך</div>
+  <div class="form-row">
+    <input type="email" id="email-input" placeholder="האימייל שלך" dir="ltr">
+    <button onclick="handleSubmit()">אני רוצה גישה</button>
+  </div>
+  <div id="thanks">תודה! נעדכן אותך ראשון כשנשיק 🎉</div>
+  <div class="note">ללא ספאם. ביטול בכל עת.</div>
+</div>
+
+<footer>© 2024 פוזיציה</footer>
+
+<script>
+function handleSubmit() {
+  var inp = document.getElementById('email-input');
+  if (!inp.value || !inp.value.includes('@')) {
+    inp.style.borderColor = '#e24b4a';
+    return;
+  }
+  document.querySelector('.form-row').style.display = 'none';
+  document.getElementById('thanks').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
