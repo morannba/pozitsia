@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פוזיציה — כל החדשות, כל הזוויות</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f5f3; color: #1a1a1a; }
+
+/* NAV */
+nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 24px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+.nav-logo span { color: #185FA5; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { font-size: 14px; color: #555; text-decoration: none; }
+.nav-links a:hover { color: #185FA5; }
+.nav-subscribe { background: #185FA5; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Heebo', sans-serif; }
+
+/* TOPICS BAR */
+.topics-bar { background: #fff; border-bottom: 1px solid #eee; padding: 0 24px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.topics-bar::-webkit-scrollbar { display: none; }
+.topic-pill { padding: 10px 14px; font-size: 13px; color: #555; white-space: nowrap; cursor: pointer; border-bottom: 2px solid transparent; text-decoration: none; display: block; }
+.topic-pill.active { color: #185FA5; border-bottom-color: #185FA5; font-weight: 600; }
+.topic-pill:hover { color: #185FA5; }
+
+/* DATE */
+.date-header { padding: 16px 24px 8px; font-size: 13px; color: #888; }
+
+/* FEED */
+.feed { max-width: 720px; margin: 0 auto; padding: 0 16px 40px; }
+
+/* STORY CARD */
+.story-card { background: #fff; border-radius: 14px; overflow: hidden; margin-bottom: 16px; border: 1px solid #e5e5e5; cursor: pointer; transition: border-color 0.15s; text-decoration: none; display: block; color: inherit; }
+.story-card:hover { border-color: #bbb; }
+
+.card-image { width: 100%; height: 200px; object-fit: cover; display: block; }
+
+.card-body { padding: 16px; }
+.card-tag { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+.card-title { font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: #1a1a1a; }
+.card-summary { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 14px; }
+
+/* BIAS BAR IN CARD */
+.card-bias { margin-bottom: 12px; }
+.card-bias-bar { height: 6px; border-radius: 3px; overflow: hidden; display: flex; margin-bottom: 5px; }
+.bar-l { background: #C94B7B; }
+.bar-c { background: #999; }
+.bar-r { background: #185FA5; }
+.card-bias-labels { display: flex; justify-content: space-between; font-size: 11px; }
+.card-bias-labels .l { color: #C94B7B; }
+.card-bias-labels .c { color: #999; }
+.card-bias-labels .r { color: #185FA5; }
+
+/* SOURCES ROW */
+.card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #f0f0f0; }
+.source-logos { display: flex; gap: 6px; align-items: center; }
+.source-logo { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
+.source-count { font-size: 12px; color: #888; }
+.card-time { font-size: 12px; color: #aaa; }
+
+/* PLACEHOLDER CARDS */
+.placeholder-card { background: #fff; border-radius: 14px; border: 1px dashed #ddd; margin-bottom: 16px; padding: 32px; text-align: center; color: #bbb; font-size: 14px; }
+
+@media(max-width:600px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .card-title { font-size: 17px; }
+  .card-image { height: 170px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">פוזי<span>ציה</span></a>
+  <div class="nav-links">
+    <a href="#">ראשי</a>
+    <a href="#">פוליטיקה</a>
+    <a href="#">ביטחון</a>
+    <a href="#">כלכלה</a>
+    <a href="#">Blindspot</a>
+  </div>
+  <button class="nav-subscribe">הצטרף לבטא</button>
+</nav>
+
+<div class="topics-bar">
+  <a class="topic-pill active" href="#">הכל</a>
+  <a class="topic-pill" href="#">פוליטיקה</a>
+  <a class="topic-pill" href="#">ביטחון</a>
+  <a class="topic-pill" href="#">לבנון</a>
+  <a class="topic-pill" href="#">איראן</a>
+  <a class="topic-pill" href="#">כלכלה</a>
+  <a class="topic-pill" href="#">משפט</a>
+  <a class="topic-pill" href="#">עולם</a>
+</div>
+
+<div class="date-header">ראשון, 28 ביוני 2026</div>
+
+<div class="feed">
+
+  <!-- STORY 1 — הסכם לבנון -->
+  <a class="story-card" href="#">
+    <img class="card-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Flag_of_Lebanon.svg/800px-Flag_of_Lebanon.svg.png" alt="הסכם לבנון" onerror="this.style.background='#c8d8e8'; this.style.height='200px';">
+    <div class="card-body">
+      <div class="card-tag">ביטחון · לבנון</div>
+      <div class="card-title">הסכם המסגרת עם לבנון — ניצחון היסטורי או מצב ביניים?</div>
+      <div class="card-summary">ישראל ולבנון חתמו בוושינגטון על הסכם מסגרת. ישראל תישאר ברצועת הביטחון עד לפירוק חיזבאללה. חיזבאללה אינו צד להסכם.</div>
+      <div class="card-bias">
+        <div class="card-bias-bar">
+          <div class="bar-l" style="width:40%;"></div>
+          <div class="bar-c" style="width:20%;"></div>
+          <div class="bar-r" style="width:40%;"></div>
+        </div>
+        <div class="card-bias-labels">
+          <span class="l">שמאל 40%</span>
+          <span class="c">מרכז 20%</span>
+          <span class="r">ימין 40%</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="source-logos">
+            <div class="source-logo" style="background:#1a1a1a;">הא</div>
+            <div class="source-logo" style="background:#E8242E;">ידה</div>
+            <div class="source-logo" style="background:#E8242E;">yn</div>
+            <div class="source-logo" style="background:#555;">מע</div>
+            <div class="source-logo" style="background:#1A3A6B;">מק</div>
+          </div>
+          <span class="source-count">5 מקורות</span>
+        </div>
+        <span class="card-time">לפני 3 שעות</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- PLACEHOLDER -->
+  <div class="placeholder-card">כתבה נוספת תתווסף כאן ·  הזן תוכן ידנית</div>
+  <div class="placeholder-card">כתבה נוספת תתווסף כאן · הזן תוכן ידנית</div>
+
+</div>
+
+</body>
+</html>
