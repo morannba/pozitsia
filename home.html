@@ -8,8 +8,6 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f5f3; color: #1a1a1a; }
-
-/* NAV */
 nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
 .nav-logo { font-size: 24px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
 .nav-logo span { color: #185FA5; }
@@ -17,32 +15,19 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 .nav-links a { font-size: 14px; color: #555; text-decoration: none; }
 .nav-links a:hover { color: #185FA5; }
 .nav-subscribe { background: #185FA5; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Heebo', sans-serif; }
-
-/* TOPICS BAR */
 .topics-bar { background: #fff; border-bottom: 1px solid #eee; padding: 0 24px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
 .topics-bar::-webkit-scrollbar { display: none; }
 .topic-pill { padding: 10px 14px; font-size: 13px; color: #555; white-space: nowrap; cursor: pointer; border-bottom: 2px solid transparent; text-decoration: none; display: block; }
 .topic-pill.active { color: #185FA5; border-bottom-color: #185FA5; font-weight: 600; }
-.topic-pill:hover { color: #185FA5; }
-
-/* DATE */
 .date-header { padding: 16px 24px 8px; font-size: 13px; color: #888; }
-
-/* FEED */
 .feed { max-width: 720px; margin: 0 auto; padding: 0 16px 40px; }
-
-/* STORY CARD */
 .story-card { background: #fff; border-radius: 14px; overflow: hidden; margin-bottom: 16px; border: 1px solid #e5e5e5; cursor: pointer; transition: border-color 0.15s; text-decoration: none; display: block; color: inherit; }
 .story-card:hover { border-color: #bbb; }
-
 .card-image { width: 100%; height: 200px; object-fit: cover; display: block; }
-
 .card-body { padding: 16px; }
 .card-tag { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
 .card-title { font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: #1a1a1a; }
 .card-summary { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 14px; }
-
-/* BIAS BAR IN CARD */
 .card-bias { margin-bottom: 12px; }
 .card-bias-bar { height: 6px; border-radius: 3px; overflow: hidden; display: flex; margin-bottom: 5px; }
 .bar-l { background: #C94B7B; }
@@ -52,19 +37,12 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 .card-bias-labels .l { color: #C94B7B; }
 .card-bias-labels .c { color: #999; }
 .card-bias-labels .r { color: #185FA5; }
-
-/* SOURCES ROW */
 .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #f0f0f0; }
 .source-logos { display: flex; gap: 6px; align-items: center; }
 .source-logo { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
 .source-count { font-size: 12px; color: #888; }
 .card-time { font-size: 12px; color: #aaa; }
-.story-card * { pointer-events: none; }
-.story-card { pointer-events: all; }
-
-/* PLACEHOLDER CARDS */
 .placeholder-card { background: #fff; border-radius: 14px; border: 1px dashed #ddd; margin-bottom: 16px; padding: 32px; text-align: center; color: #bbb; font-size: 14px; }
-
 @media(max-width:600px) {
   nav { padding: 0 16px; }
   .nav-links { display: none; }
@@ -76,7 +54,7 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">פוזי<span>ציה</span></a>
+  <a class="nav-logo" href="home.html">פוזי<span>ציה</span></a>
   <div class="nav-links">
     <a href="#">ראשי</a>
     <a href="#">פוליטיקה</a>
@@ -102,8 +80,7 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 
 <div class="feed">
 
-  <!-- STORY 1 — הסכם לבנון -->
-  <a class="story-card" href="#">
+  <a class="story-card" href="story-lebanon.html">
     <img class="card-image" src="lebanon-and-israel.png" alt="הסכם לבנון" onerror="this.style.background='#c8d8e8';">
     <div class="card-body">
       <div class="card-tag">ביטחון · לבנון</div>
@@ -135,11 +112,10 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
         <span class="card-time">לפני 3 שעות</span>
       </div>
     </div>
-  </div>
+  </a>
 
-  <!-- STORY 2 — פשיעה -->
   <a class="story-card" href="story-crime.html">
-    <img class="card-image" src="crime-holon.jpg" alt="פשיעה בחברה הערבית" onerror="this.style.background='#555';this.style.height='200px';">
+    <img class="card-image" src="crime-holon.jpg" alt="פשיעה בחברה הערבית" onerror="this.style.background='#555';">
     <div class="card-body">
       <div class="card-tag">פשיעה · חברה ערבית</div>
       <div class="card-title">5 נרצחים בפחות מחצי יממה — יום מדמם במיוחד</div>
@@ -170,9 +146,8 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
     </div>
   </a>
 
-  <!-- STORY 3 — קטאר -->
   <a class="story-card" href="story-qatar.html">
-    <img class="card-image" src="qatar-elbit.jpg" alt="נשק ישראלי לקטאר" onerror="this.style.background='#1a2a4a';this.style.height='200px';">
+    <img class="card-image" src="qatar-elbit.jpg" alt="נשק ישראלי לקטאר" onerror="this.style.background='#1a2a4a';">
     <div class="card-body">
       <div class="card-tag">ביטחון · חשיפה</div>
       <div class="card-title">מסמכים חושפים: מערכות נשק ישראליות נמכרו לקטאר ולסעודיה</div>
@@ -199,7 +174,6 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
     </div>
   </a>
 
-  <!-- PLACEHOLDER -->
   <div class="placeholder-card">כתבה נוספת תתווסף כאן · הזן תוכן ידנית</div>
 
 </div>
