@@ -76,7 +76,7 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 <body>
 
 <nav>
-  <a class="nav-logo" href="story-lebanon.html">פוזי<span>ציה</span></a>
+  <a class="nav-logo" href="#">פוזי<span>ציה</span></a>
   <div class="nav-links">
     <a href="#">ראשי</a>
     <a href="#">פוליטיקה</a>
@@ -103,7 +103,7 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 <div class="feed">
 
   <!-- STORY 1 — הסכם לבנון -->
-  <a class="story-card" href="story-lebanon.html">
+  <a class="story-card" href="#">
     <img class="card-image" src="lebanon-and-israel.png" alt="הסכם לבנון" onerror="this.style.background='#c8d8e8';">
     <div class="card-body">
       <div class="card-tag">ביטחון · לבנון</div>
@@ -137,8 +137,40 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
     </div>
   </div>
 
+  <!-- STORY 2 — פשיעה -->
+  <div class="story-card" onclick="window.location.href='story-crime.html'" style="cursor:pointer;">
+    <img class="card-image" src="crime-holon.jpg" alt="פשיעה בחברה הערבית" onerror="this.style.background='#555';this.style.height='200px';">
+    <div class="card-body">
+      <div class="card-tag">פשיעה · חברה ערבית</div>
+      <div class="card-title">5 נרצחים בפחות מחצי יממה — יום מדמם במיוחד</div>
+      <div class="card-summary">חמישה נרצחים בארבע זירות שונות — טייבה, יפו, קלנסווה וחולון. 141 נרצחו מתחילת 2026.</div>
+      <div class="card-bias">
+        <div class="card-bias-bar">
+          <div class="bar-l" style="width:33%;"></div>
+          <div class="bar-c" style="width:34%;"></div>
+          <div class="bar-r" style="width:33%;"></div>
+        </div>
+        <div class="card-bias-labels">
+          <span class="l">שמאל 33%</span>
+          <span class="c">מרכז 34%</span>
+          <span class="r">ימין 33%</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="source-logos">
+            <div class="source-logo" style="background:#E8242E;">yn</div>
+            <div class="source-logo" style="background:#003087;">מע</div>
+            <div class="source-logo" style="background:#CC0000;">14</div>
+          </div>
+          <span class="source-count">3 מקורות</span>
+        </div>
+        <span class="card-time">לפני 2 שעות</span>
+      </div>
+    </div>
+  </div>
+
   <!-- PLACEHOLDER -->
-  <div class="placeholder-card">כתבה נוספת תתווסף כאן ·  הזן תוכן ידנית</div>
   <div class="placeholder-card">כתבה נוספת תתווסף כאן · הזן תוכן ידנית</div>
 
 </div>
