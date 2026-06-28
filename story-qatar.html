@@ -3,51 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>נשק ישראלי לקטאר וסעודיה — פוזיציה</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<title>נשק ישראלי לקטאר — פוזיציה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f5f3; color: #1a1a1a; }
-nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; position: sticky; top: 0; z-index: 100; }
-.nav-logo { font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f7f7f5; color: #1a1a1a; }
+nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 48px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 20px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
 .nav-logo span { color: #185FA5; }
 .nav-back { font-size: 13px; color: #185FA5; text-decoration: none; }
-.hero { position: relative; width: 100%; height: 340px; overflow: hidden; }
-.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
-.hero-overlay { position: absolute; bottom: 0; right: 0; left: 0; padding: 24px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); }
-.hero-date { font-size: 12px; color: #aaa; margin-bottom: 6px; }
-.hero-title { font-size: 24px; font-weight: 700; color: #fff; line-height: 1.35; max-width: 640px; }
-.single-source-banner { background: #FFF8ED; border-bottom: 1px solid #F5D79E; padding: 10px 24px; font-size: 13px; color: #7A4A00; display: flex; align-items: center; gap: 8px; }
-.bias-section { background: #fff; border-bottom: 1px solid #eee; padding: 16px 24px; }
-.bias-meta { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 13px; color: #666; }
-.bias-bar-wrap { height: 8px; border-radius: 4px; overflow: hidden; display: flex; margin-bottom: 6px; }
+.hero { position: relative; width: 100%; height: 200px; overflow: hidden; }
+.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+.hero-overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 16px 24px; background: linear-gradient(transparent 20%, rgba(0,0,0,0.75)); }
+.hero-date { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.hero-title { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.3; }
+.page { max-width: 1100px; margin: 0 auto; padding: 0 24px 48px; display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: start; }
+.summary-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 16px 20px; margin-top: 20px; margin-bottom: 16px; }
+.summary-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.summary-label { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.8px; text-transform: uppercase; }
+.single-source-tag { font-size: 11px; background: #FFF3E0; color: #E65100; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
+.summary-text { font-size: 14px; line-height: 1.65; color: #333; }
+.bias-row { display: flex; align-items: center; gap: 12px; padding: 10px 20px; background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; margin-bottom: 16px; }
+.bias-stat { font-size: 12px; color: #888; white-space: nowrap; }
+.bias-bar-wrap { flex: 1; height: 5px; border-radius: 3px; overflow: hidden; display: flex; }
 .bar-l { background: #C94B7B; }
-.bar-c { background: #888; }
-.bar-r { background: #185FA5; }
-.bias-labels { display: flex; justify-content: space-between; font-size: 12px; }
-.bias-labels .l { color: #C94B7B; font-weight: 500; }
-.summary-section { padding: 20px 24px; background: #fff; border-bottom: 1px solid #eee; }
-.summary-label { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 1px; margin-bottom: 8px; }
-.summary-text { font-size: 15px; line-height: 1.7; color: #333; }
-.coverage-section { padding: 20px 24px; }
-.section-title { font-size: 13px; font-weight: 700; color: #888; letter-spacing: 0.5px; margin-bottom: 16px; }
-.source-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
-.source-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 0; }
-.source-info { display: flex; align-items: center; gap: 10px; }
-.source-badge { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
-.source-name { font-size: 14px; font-weight: 600; }
-.source-writer { font-size: 12px; color: #888; }
-.lean-badge { font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
-.lean-l { background: #fce8f1; color: #C94B7B; }
-.source-headline { font-size: 16px; font-weight: 600; padding: 10px 16px 6px; line-height: 1.4; }
-.source-angle { font-size: 14px; color: #444; padding: 0 16px; line-height: 1.6; }
-.source-footer { display: flex; justify-content: flex-end; padding: 10px 16px 14px; }
-.source-link { font-size: 12px; color: #185FA5; text-decoration: none; }
-.missing-section { padding: 0 24px 24px; }
-.missing-card { background: #F0F4FF; border: 1px solid #C5D3F5; border-radius: 12px; padding: 16px; }
-.missing-title { font-size: 13px; font-weight: 700; color: #185FA5; margin-bottom: 6px; }
-.missing-text { font-size: 13px; color: #444; line-height: 1.6; }
-@media(max-width:600px) { .hero { height: 220px; } .hero-title { font-size: 18px; } }
+.bias-pcts { display: flex; justify-content: space-between; font-size: 11px; margin-top: 4px; }
+.bias-pcts .l { color: #C94B7B; font-weight: 600; }
+.bias-inner { flex: 1; }
+.sources-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 8px; }
+.source-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; margin-bottom: 8px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; }
+.source-badge { width: 32px; height: 32px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 1px; }
+.source-main { flex: 1; min-width: 0; }
+.source-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.source-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.source-writer { font-size: 11px; color: #aaa; }
+.lean-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.source-headline { font-size: 13px; font-weight: 600; color: #1a1a1a; line-height: 1.35; margin-bottom: 4px; }
+.source-angle { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 6px; }
+.source-link { font-size: 11px; color: #185FA5; text-decoration: none; }
+.source-link:hover { text-decoration: underline; }
+.missing-card { background: #F0F4FF; border: 1px solid #C5D3F5; border-radius: 8px; padding: 12px 14px; margin-top: 8px; font-size: 13px; color: #444; line-height: 1.5; }
+.missing-title { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.sidebar { margin-top: 20px; position: sticky; top: 60px; }
+.sidebar-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+.sidebar-title { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px; }
+.coverage-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+.coverage-row:last-child { border-bottom: none; }
+.coverage-label { color: #555; }
+.coverage-val { font-weight: 600; color: #1a1a1a; }
+.logo-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.logo-sm { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; }
+@media(max-width: 700px) { .page { grid-template-columns: 1fr; } .sidebar { display: none; } .hero { height: 160px; } .hero-title { font-size: 17px; } }
 </style>
 </head>
 <body>
@@ -58,61 +64,78 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 </nav>
 
 <div class="hero">
-  <img src="qatar-elbit.jpg" alt="אמיר קטאר ומערכת אלביט" onerror="this.style.background='#1a2a4a'; this.style.height='340px';">
+  <img src="qatar-elbit.jpg" alt="קטאר אלביט" onerror="this.style.background='#1a2a4a';">
   <div class="hero-overlay">
-    <div class="hero-date">28 ביוני 2026</div>
-    <h1 class="hero-title">מסמכים חושפים: מערכות נשק ישראליות מתקדמות נמכרו לקטאר ולסעודיה</h1>
+    <div>
+      <div class="hero-date">28 ביוני 2026 · ביטחון · חשיפה</div>
+      <h1 class="hero-title">מסמכים חושפים: מערכות נשק ישראליות מתקדמות נמכרו לקטאר ולסעודיה</h1>
+    </div>
   </div>
 </div>
 
-<div class="single-source-banner">
-  ⚠️ סיפור זה כוסה על ידי מקור אחד בלבד — הארץ (נוטה לשמאל). מקורות אחרים לא כיסו.
-</div>
+<div class="page">
+  <div class="main-col">
 
-<div class="bias-section">
-  <div class="bias-meta">
-    <span>1 מקור כיסה את הסיפור</span>
-    <span>כיסוי חד-צדדי</span>
-  </div>
-  <div class="bias-bar-wrap">
-    <div class="bar-l" style="width:100%;"></div>
-  </div>
-  <div class="bias-labels">
-    <span class="l">שמאל 100%</span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
+    <div class="summary-card">
+      <div class="summary-top">
+        <span class="summary-label">סיכום</span>
+        <span class="single-source-tag">מקור אחד בלבד</span>
+      </div>
+      <div class="summary-text">מסמכים ותמונות שפרסמה הארץ חושפים כי חברות ישראליות — אלביט והתעשייה האווירית — מכרו במאות מיליוני שקלים מערכות הגנה מפני טילים ורכיבים למטוסי F15 לקטאר ולסעודיה, מדינות שאין לישראל עמן יחסים דיפלומטיים רשמיים.</div>
+    </div>
 
-<div class="summary-section">
-  <div class="summary-label">סיכום האירוע</div>
-  <div class="summary-text">מסמכים ותמונות שפרסמה הארץ חושפים כי חברות ישראליות — אלביט והתעשייה האווירית — מכרו במאות מיליוני שקלים מערכות הגנה מפני טילים ורכיבים למטוסי F15 לקטאר ולסעודיה, מדינות שאין לישראל עמן יחסים דיפלומטיים רשמיים.</div>
-</div>
-
-<div class="coverage-section">
-  <div class="section-title">איך המקור כיסה את הסיפור</div>
-
-  <div class="source-card">
-    <div class="source-header">
-      <div class="source-info">
-        <div class="source-badge" style="background:#1a1a1a;">הא</div>
-        <div>
-          <div class="source-name">הארץ</div>
-          <div class="source-writer">עודד ירון</div>
+    <div class="bias-row">
+      <span class="bias-stat">1 מקור</span>
+      <div class="bias-inner">
+        <div class="bias-bar-wrap">
+          <div class="bar-l" style="width:100%;"></div>
+        </div>
+        <div class="bias-pcts">
+          <span class="l">שמאל 100%</span>
+          <span></span>
+          <span></span>
         </div>
       </div>
-      <span class="lean-badge lean-l">נוטה לשמאל</span>
     </div>
-    <div class="source-headline">מסמכים ותמונות חושפים מערכות ישראליות מתקדמות שנמכרו לקטאר ולסעודיה</div>
-    <div class="source-angle">חקירה מעמיקה המבוססת על מסמכי משרד ההגנה האמריקאי ותצלומי מטוסים. חושפת שמערכת C-MUSIC של אלביט הותקנה במטוסי האמיר הקטארי, וקסדות קרב מתקדמות נמכרו לסעודיה — בזמן שנתניהו תיאר את קטאר כ"מדינה מורכבת" ותמך בהגדרתה כמדינה תומכת טרור.</div>
-    <div class="source-footer"><a class="source-link" href="https://www.haaretz.co.il/news/security/2026-06-28/ty-article/.premium/0000019e-d013-d1e8-a5fe-f5bb037c0000" target="_blank">קרא את הכתבה המלאה ←</a></div>
-  </div>
-</div>
 
-<div class="missing-section">
-  <div class="missing-card">
-    <div class="missing-title">מקורות אחרים לא כיסו את הסיפור</div>
-    <div class="missing-text">ynet, ישראל היום, מעריב, ערוץ 14 ומקור ראשון לא פרסמו כתבות על הנושא. היעדר הכיסוי הוא עצמו מידע.</div>
+    <div class="sources-label">כיסוי לפי מקור</div>
+
+    <div class="source-card">
+      <div class="source-badge" style="background:#1a1a1a;">הא</div>
+      <div class="source-main">
+        <div class="source-top">
+          <span class="source-name">הארץ</span>
+          <span class="lean-dot" style="background:#C94B7B;"></span>
+          <span class="source-writer">עודד ירון</span>
+        </div>
+        <div class="source-headline">מסמכים ותמונות חושפים מערכות ישראליות מתקדמות שנמכרו לקטאר ולסעודיה</div>
+        <div class="source-angle">חקירה מבוססת מסמכי משרד ההגנה האמריקאי. מערכת C-MUSIC של אלביט הותקנה במטוסי האמיר הקטארי, וקסדות קרב נמכרו לסעודיה — בזמן שנתניהו תיאר את קטאר כ"מדינה מורכבת".</div>
+        <a class="source-link" href="https://www.haaretz.co.il/news/security/2026-06-28/ty-article/.premium/0000019e-d013-d1e8-a5fe-f5bb037c0000" target="_blank">קרא את הכתבה ←</a>
+      </div>
+    </div>
+
+    <div class="missing-card">
+      <div class="missing-title">מקורות אחרים לא כיסו</div>
+      ynet, ישראל היום, מעריב, ערוץ 14 ומקור ראשון לא פרסמו כתבות על הנושא. היעדר הכיסוי הוא עצמו מידע.
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">פרטי כיסוי</div>
+      <div class="coverage-row"><span class="coverage-label">סה"כ מקורות</span><span class="coverage-val">1</span></div>
+      <div class="coverage-row"><span class="coverage-label">נוטה שמאל</span><span class="coverage-val" style="color:#C94B7B;">1</span></div>
+      <div class="coverage-row"><span class="coverage-label">מרכז</span><span class="coverage-val" style="color:#999;">0</span></div>
+      <div class="coverage-row"><span class="coverage-label">נוטה ימין</span><span class="coverage-val" style="color:#185FA5;">0</span></div>
+      <div class="coverage-row"><span class="coverage-label">עודכן</span><span class="coverage-val">לפני 5 שעות</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">מקורות</div>
+      <div class="logo-grid">
+        <div class="logo-sm" style="background:#1a1a1a;">הא</div>
+      </div>
+    </div>
   </div>
 </div>
 
