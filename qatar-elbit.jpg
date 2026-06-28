@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>נשק ישראלי לקטאר וסעודיה — פוזיציה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f5f3; color: #1a1a1a; }
+nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+.nav-logo span { color: #185FA5; }
+.nav-back { font-size: 13px; color: #185FA5; text-decoration: none; }
+.hero { position: relative; width: 100%; height: 340px; overflow: hidden; }
+.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
+.hero-overlay { position: absolute; bottom: 0; right: 0; left: 0; padding: 24px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); }
+.hero-date { font-size: 12px; color: #aaa; margin-bottom: 6px; }
+.hero-title { font-size: 24px; font-weight: 700; color: #fff; line-height: 1.35; max-width: 640px; }
+.single-source-banner { background: #FFF8ED; border-bottom: 1px solid #F5D79E; padding: 10px 24px; font-size: 13px; color: #7A4A00; display: flex; align-items: center; gap: 8px; }
+.bias-section { background: #fff; border-bottom: 1px solid #eee; padding: 16px 24px; }
+.bias-meta { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 13px; color: #666; }
+.bias-bar-wrap { height: 8px; border-radius: 4px; overflow: hidden; display: flex; margin-bottom: 6px; }
+.bar-l { background: #C94B7B; }
+.bar-c { background: #888; }
+.bar-r { background: #185FA5; }
+.bias-labels { display: flex; justify-content: space-between; font-size: 12px; }
+.bias-labels .l { color: #C94B7B; font-weight: 500; }
+.summary-section { padding: 20px 24px; background: #fff; border-bottom: 1px solid #eee; }
+.summary-label { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 1px; margin-bottom: 8px; }
+.summary-text { font-size: 15px; line-height: 1.7; color: #333; }
+.coverage-section { padding: 20px 24px; }
+.section-title { font-size: 13px; font-weight: 700; color: #888; letter-spacing: 0.5px; margin-bottom: 16px; }
+.source-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+.source-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 0; }
+.source-info { display: flex; align-items: center; gap: 10px; }
+.source-badge { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.source-name { font-size: 14px; font-weight: 600; }
+.source-writer { font-size: 12px; color: #888; }
+.lean-badge { font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
+.lean-l { background: #fce8f1; color: #C94B7B; }
+.source-headline { font-size: 16px; font-weight: 600; padding: 10px 16px 6px; line-height: 1.4; }
+.source-angle { font-size: 14px; color: #444; padding: 0 16px; line-height: 1.6; }
+.source-footer { display: flex; justify-content: flex-end; padding: 10px 16px 14px; }
+.source-link { font-size: 12px; color: #185FA5; text-decoration: none; }
+.missing-section { padding: 0 24px 24px; }
+.missing-card { background: #F0F4FF; border: 1px solid #C5D3F5; border-radius: 12px; padding: 16px; }
+.missing-title { font-size: 13px; font-weight: 700; color: #185FA5; margin-bottom: 6px; }
+.missing-text { font-size: 13px; color: #444; line-height: 1.6; }
+@media(max-width:600px) { .hero { height: 220px; } .hero-title { font-size: 18px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="home.html">פוזי<span>ציה</span></a>
+  <a class="nav-back" href="home.html">← כל הסיפורים</a>
+</nav>
+
+<div class="hero">
+  <img src="qatar-elbit.jpg" alt="אמיר קטאר ומערכת אלביט" onerror="this.style.background='#1a2a4a'; this.style.height='340px';">
+  <div class="hero-overlay">
+    <div class="hero-date">28 ביוני 2026</div>
+    <h1 class="hero-title">מסמכים חושפים: מערכות נשק ישראליות מתקדמות נמכרו לקטאר ולסעודיה</h1>
+  </div>
+</div>
+
+<div class="single-source-banner">
+  ⚠️ סיפור זה כוסה על ידי מקור אחד בלבד — הארץ (נוטה לשמאל). מקורות אחרים לא כיסו.
+</div>
+
+<div class="bias-section">
+  <div class="bias-meta">
+    <span>1 מקור כיסה את הסיפור</span>
+    <span>כיסוי חד-צדדי</span>
+  </div>
+  <div class="bias-bar-wrap">
+    <div class="bar-l" style="width:100%;"></div>
+  </div>
+  <div class="bias-labels">
+    <span class="l">שמאל 100%</span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<div class="summary-section">
+  <div class="summary-label">סיכום האירוע</div>
+  <div class="summary-text">מסמכים ותמונות שפרסמה הארץ חושפים כי חברות ישראליות — אלביט והתעשייה האווירית — מכרו במאות מיליוני שקלים מערכות הגנה מפני טילים ורכיבים למטוסי F15 לקטאר ולסעודיה, מדינות שאין לישראל עמן יחסים דיפלומטיים רשמיים.</div>
+</div>
+
+<div class="coverage-section">
+  <div class="section-title">איך המקור כיסה את הסיפור</div>
+
+  <div class="source-card">
+    <div class="source-header">
+      <div class="source-info">
+        <div class="source-badge" style="background:#1a1a1a;">הא</div>
+        <div>
+          <div class="source-name">הארץ</div>
+          <div class="source-writer">עודד ירון</div>
+        </div>
+      </div>
+      <span class="lean-badge lean-l">נוטה לשמאל</span>
+    </div>
+    <div class="source-headline">מסמכים ותמונות חושפים מערכות ישראליות מתקדמות שנמכרו לקטאר ולסעודיה</div>
+    <div class="source-angle">חקירה מעמיקה המבוססת על מסמכי משרד ההגנה האמריקאי ותצלומי מטוסים. חושפת שמערכת C-MUSIC של אלביט הותקנה במטוסי האמיר הקטארי, וקסדות קרב מתקדמות נמכרו לסעודיה — בזמן שנתניהו תיאר את קטאר כ"מדינה מורכבת" ותמך בהגדרתה כמדינה תומכת טרור.</div>
+    <div class="source-footer"><a class="source-link" href="https://www.haaretz.co.il/news/security/2026-06-28/ty-article/.premium/0000019e-d013-d1e8-a5fe-f5bb037c0000" target="_blank">קרא את הכתבה המלאה ←</a></div>
+  </div>
+</div>
+
+<div class="missing-section">
+  <div class="missing-card">
+    <div class="missing-title">מקורות אחרים לא כיסו את הסיפור</div>
+    <div class="missing-text">ynet, ישראל היום, מעריב, ערוץ 14 ומקור ראשון לא פרסמו כתבות על הנושא. היעדר הכיסוי הוא עצמו מידע.</div>
+  </div>
+</div>
+
+</body>
+</html>
