@@ -59,6 +59,8 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 .source-logo { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
 .source-count { font-size: 12px; color: #888; }
 .card-time { font-size: 12px; color: #aaa; }
+.story-card * { pointer-events: none; }
+.story-card { pointer-events: all; }
 
 /* PLACEHOLDER CARDS */
 .placeholder-card { background: #fff; border-radius: 14px; border: 1px dashed #ddd; margin-bottom: 16px; padding: 32px; text-align: center; color: #bbb; font-size: 14px; }
@@ -101,7 +103,7 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 <div class="feed">
 
   <!-- STORY 1 — הסכם לבנון -->
-  <a class="story-card" href="story-lebanon.html">
+  <a class="story-card" href="#">
     <img class="card-image" src="lebanon-and-israel.png" alt="הסכם לבנון" onerror="this.style.background='#c8d8e8';">
     <div class="card-body">
       <div class="card-tag">ביטחון · לבנון</div>
