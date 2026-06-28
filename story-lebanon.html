@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הסכם המסגרת עם לבנון — פוזיציה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f5f3; color: #1a1a1a; }
+
+/* NAV */
+nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+.nav-logo span { color: #185FA5; }
+.nav-back { font-size: 13px; color: #185FA5; text-decoration: none; display: flex; align-items: center; gap: 4px; }
+
+/* HERO */
+.hero { position: relative; width: 100%; height: 340px; overflow: hidden; }
+.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
+.hero-overlay { position: absolute; bottom: 0; right: 0; left: 0; padding: 24px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); }
+.hero-date { font-size: 12px; color: #aaa; margin-bottom: 6px; }
+.hero-title { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.35; max-width: 640px; }
+
+/* BIAS BAR */
+.bias-section { background: #fff; border-bottom: 1px solid #eee; padding: 16px 24px; }
+.bias-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.bias-count { font-size: 13px; color: #666; }
+.bias-bar-wrap { height: 8px; border-radius: 4px; overflow: hidden; display: flex; margin-bottom: 6px; }
+.bar-l { background: #C94B7B; }
+.bar-c { background: #888; }
+.bar-r { background: #185FA5; }
+.bias-labels { display: flex; justify-content: space-between; font-size: 12px; }
+.bias-labels .l { color: #C94B7B; font-weight: 500; }
+.bias-labels .c { color: #888; font-weight: 500; }
+.bias-labels .r { color: #185FA5; font-weight: 500; }
+
+/* SUMMARY */
+.summary-section { padding: 20px 24px; background: #fff; border-bottom: 1px solid #eee; }
+.summary-label { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.summary-text { font-size: 15px; line-height: 1.7; color: #333; }
+
+/* COVERAGE */
+.coverage-section { padding: 20px 24px; }
+.section-title { font-size: 13px; font-weight: 700; color: #888; letter-spacing: 0.5px; margin-bottom: 16px; }
+
+.source-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+.source-card:hover { border-color: #bbb; }
+
+.source-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 0; }
+.source-info { display: flex; align-items: center; gap: 10px; }
+.source-badge { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.source-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+.source-writer { font-size: 12px; color: #888; }
+.lean-badge { font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+.lean-l { background: #fce8f1; color: #C94B7B; }
+.lean-c { background: #f0f0f0; color: #666; }
+.lean-r { background: #e8f0fb; color: #185FA5; }
+
+.source-headline { font-size: 16px; font-weight: 600; color: #1a1a1a; padding: 10px 16px 6px; line-height: 1.4; }
+.source-angle { font-size: 14px; color: #444; padding: 0 16px; line-height: 1.6; }
+.source-quote { margin: 10px 16px; padding: 10px 14px; background: #f8f8f6; border-right: 3px solid #ddd; border-radius: 4px; font-size: 13px; color: #555; line-height: 1.6; font-style: italic; }
+.source-footer { display: flex; justify-content: flex-end; padding: 10px 16px 14px; }
+.source-link { font-size: 12px; color: #185FA5; text-decoration: none; }
+
+/* BLINDSPOT */
+.blindspot-card { background: #FFF8ED; border: 1px solid #F5D79E; border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; }
+.blindspot-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.blindspot-icon { font-size: 16px; }
+.blindspot-title { font-size: 13px; font-weight: 700; color: #7A4A00; }
+.blindspot-text { font-size: 13px; color: #8B5800; }
+
+@media(max-width:600px) {
+  .hero { height: 220px; }
+  .hero-title { font-size: 20px; }
+  .source-headline { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">פוזי<span>ציה</span></a>
+  <a class="nav-back" href="#">← כל הסיפורים</a>
+</nav>
+
+<div class="hero">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Flag_of_Israel_%28bordered%29.svg/800px-Flag_of_Israel_%28bordered%29.svg.png" alt="הסכם ישראל לבנון" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80'">
+  <div class="hero-overlay">
+    <div class="hero-date">28 ביוני 2026</div>
+    <h1 class="hero-title">הסכם המסגרת עם לבנון — ניצחון, מצב ביניים, או מטען צד?</h1>
+  </div>
+</div>
+
+<div class="bias-section">
+  <div class="bias-meta">
+    <span class="bias-count">5 מקורות כיסו את הסיפור</span>
+    <span style="font-size:12px; color:#888;">חלוקת הכיסוי לפי נטיית המקור</span>
+  </div>
+  <div class="bias-bar-wrap">
+    <div class="bar-l" style="width:40%;"></div>
+    <div class="bar-c" style="width:20%;"></div>
+    <div class="bar-r" style="width:40%;"></div>
+  </div>
+  <div class="bias-labels">
+    <span class="l">שמאל 40%</span>
+    <span class="c">מרכז 20%</span>
+    <span class="r">ימין 40%</span>
+  </div>
+</div>
+
+<div class="summary-section">
+  <div class="summary-label">סיכום האירוע</div>
+  <div class="summary-text">ישראל ולבנון חתמו ביום שישי בוושינגטון על הסכם מסגרת. לפי ההסכם, ישראל תישאר ברצועת הביטחון בדרום לבנון עד לפירוק חיזבאללה מנשקו, ויוקמו שני אזורי פיילוט שבהם צבא לבנון יתחיל לקבל שליטה. חיזבאללה אינו צד להסכם והודיע על התנגדות.</div>
+</div>
+
+<div class="coverage-section">
+  <div class="section-title">איך כל מקור כיסה את הסיפור</div>
+
+  <!-- ישראל היום -->
+  <div class="source-card">
+    <div class="source-header">
+      <div class="source-info">
+        <div class="source-badge" style="background:#E8242E;">ידה</div>
+        <div>
+          <div class="source-name">ישראל היום</div>
+          <div class="source-writer">דני זקן</div>
+        </div>
+      </div>
+      <span class="lean-badge lean-r">נוטה לימין</span>
+    </div>
+    <div class="source-headline">נתניהו: "ההסכם — מכה לאיראן; אקים ממשלה לאומית רחבה"</div>
+    <div class="source-angle">הכתבה מתמקדת בנאום נתניהו ובמסרים החיוביים: ישראל נשארת ברצועת הביטחון, האיום האיראני הוכה, ויוקצו מעל 20 מיליארד שקלים לשיקום הצפון.</div>
+    <div class="source-quote">"ממשלת לבנון גילתה אומץ לב. זו מכה גדולה לאיראן וחיזבאללה. אנחנו שוברים את ציר הטרור האיראני"</div>
+    <div class="source-footer"><a class="source-link" href="#">קרא את הכתבה המלאה ←</a></div>
+  </div>
+
+  <!-- מקור ראשון -->
+  <div class="source-card">
+    <div class="source-header">
+      <div class="source-info">
+        <div class="source-badge" style="background:#1A3A6B;">מק</div>
+        <div>
+          <div class="source-name">מקור ראשון</div>
+          <div class="source-writer">הודיה כריש חזוני</div>
+        </div>
+      </div>
+      <span class="lean-badge lean-r">נוטה לימין</span>
+    </div>
+    <div class="source-headline">"זהו הישג היסטורי": נתניהו חושף את ההבנות עם לבנון</div>
+    <div class="source-angle">דיווח עובדתי על תוכן ההסכם עם דגש על הצהרות נתניהו. ישראל לא תיסוג עד לפירוז חיזבאללה — מוצג כהישג אסטרטגי.</div>
+    <div class="source-quote">"ישראל, לבנון וארצות הברית אומרות לאיראן: זה לא עניינכם. אין לכם שום מעמד, שום מעורבות ושום תפקיד כאן"</div>
+    <div class="source-footer"><a class="source-link" href="#">קרא את הכתבה המלאה ←</a></div>
+  </div>
+
+  <!-- מעריב -->
+  <div class="source-card">
+    <div class="source-header">
+      <div class="source-info">
+        <div class="source-badge" style="background:#555;">מע</div>
+        <div>
+          <div class="source-name">מעריב</div>
+          <div class="source-writer">אנה ברסקי</div>
+        </div>
+      </div>
+      <span class="lean-badge lean-c">מרכז</span>
+    </div>
+    <div class="source-headline">נתניהו קיבל הישג בוושינגטון — צה"ל עלול לשלם בלבנון</div>
+    <div class="source-angle">מאזן בין ההישג המדיני לסיכון הצבאי. ההסכם מספק לגיטימציה לישראל להישאר — אבל חיילים יישארו כמטרות כל עוד חיזבאללה לא מפורק.</div>
+    <div class="source-quote">"הבעיה היא שחיילי צה"ל יישארו שם לא כחתימה על מפה, אלא כמטרות"</div>
+    <div class="source-footer"><a class="source-link" href="#">קרא את הכתבה המלאה ←</a></div>
+  </div>
+
+  <!-- ynet -->
+  <div class="source-card">
+    <div class="source-header">
+      <div class="source-info">
+        <div class="source-badge" style="background:#E8242E;">yn</div>
+        <div>
+          <div class="source-name">ynet</div>
+          <div class="source-writer">רונן ברגמן</div>
+        </div>
+      </div>
+      <span class="lean-badge lean-l">נוטה לשמאל</span>
+    </div>
+    <div class="source-headline">כותרת של ניצחון, אותיות קטנות של מצב ביניים</div>
+    <div class="source-angle">ביקורת חריפה: ההסכם הוא שיטה חוזרת — לא הכרעה אלא ניהול. חיזבאללה לא היה בחדר ולא מתחייב להתפרק. ההבטחה לניצחון מוחלט הפכה למצב ביניים.</div>
+    <div class="source-quote">"הכותרת אומרת ניצחון. האותיות הקטנות אומרות: שלב א'. הצד השני נשאר חמוש, מאורגן, מושרש, וממתין"</div>
+    <div class="source-footer"><a class="source-link" href="#">קרא את הכתבה המלאה ←</a></div>
+  </div>
+
+  <!-- הארץ -->
+  <div class="source-card">
+    <div class="source-header">
+      <div class="source-info">
+        <div class="source-badge" style="background:#1a1a1a;">הא</div>
+        <div>
+          <div class="source-name">הארץ</div>
+          <div class="source-writer">צבי בראל</div>
+        </div>
+      </div>
+      <span class="lean-badge lean-l">נוטה לשמאל</span>
+    </div>
+    <div class="source-headline">בהסכם המסגרת עם לבנון טמונים מטעני צד שממתינים להתפוצץ</div>
+    <div class="source-angle">ניתוח מעמיק של הפערים: אין לוח זמנים, אין מנגנון מימון, והסיוע האמריקאי זעום. ללא כסף לשיקום דרום לבנון — חיזבאללה ימלא את החלל.</div>
+    <div class="source-quote">"אם למדינה לא יהיו מקורות לממן את השיקום, חיזבאללה ואיראן יימצאו את הדרכים למלא את החלל"</div>
+    <div class="source-footer"><a class="source-link" href="#">קרא את הכתבה המלאה ←</a></div>
+  </div>
+
+
+
+</div>
+
+</body>
+</html>
