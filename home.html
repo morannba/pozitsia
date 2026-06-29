@@ -3,51 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>פוזיציה — כל החדשות, כל הזוויות</title>
+<title>פוזיציה — הבן את החדשות מהר יותר</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f5f5f3; color: #1a1a1a; }
-nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
-.nav-logo { font-size: 24px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f7f7f5; color: #1a1a1a; }
+
+/* NAV */
+nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
 .nav-logo span { color: #185FA5; }
-.nav-links { display: flex; gap: 24px; }
-.nav-links a { font-size: 14px; color: #555; text-decoration: none; }
-.nav-links a:hover { color: #185FA5; }
-.nav-subscribe { background: #185FA5; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Heebo', sans-serif; }
-.topics-bar { background: #fff; border-bottom: 1px solid #eee; padding: 0 24px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
-.topics-bar::-webkit-scrollbar { display: none; }
-.topic-pill { padding: 10px 14px; font-size: 13px; color: #555; white-space: nowrap; cursor: pointer; border-bottom: 2px solid transparent; text-decoration: none; display: block; }
-.topic-pill.active { color: #185FA5; border-bottom-color: #185FA5; font-weight: 600; }
-.date-header { padding: 16px 24px 8px; font-size: 13px; color: #888; }
-.feed { max-width: 720px; margin: 0 auto; padding: 0 16px 40px; }
-.story-card { background: #fff; border-radius: 14px; overflow: hidden; margin-bottom: 16px; border: 1px solid #e5e5e5; cursor: pointer; transition: border-color 0.15s; text-decoration: none; display: block; color: inherit; }
-.story-card:hover { border-color: #bbb; }
-.card-image { width: 100%; height: 200px; object-fit: cover; display: block; }
-.card-body { padding: 16px; }
-.card-tag { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
-.card-title { font-size: 19px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: #1a1a1a; }
-.card-summary { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 14px; }
-.card-bias { margin-bottom: 12px; }
-.card-bias-bar { height: 6px; border-radius: 3px; overflow: hidden; display: flex; margin-bottom: 5px; }
+.nav-cta { background: #185FA5; color: #fff; border: none; padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Heebo', sans-serif; }
+
+/* DATE BAR */
+.date-bar { padding: 12px 24px; font-size: 12px; color: #999; border-bottom: 1px solid #eee; background: #fff; text-align: center; letter-spacing: 0.3px; }
+.hero-message { text-align: center; padding: 28px 24px 8px; max-width: 680px; margin: 0 auto; }
+.hero-h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3; }
+.hero-sub { font-size: 14px; color: #777; line-height: 1.6; }
+
+/* FEED */
+.feed { max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* STORY CARD */
+.story-card { background: #fff; border-radius: 12px; border: 1px solid #e8e8e8; margin-bottom: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.15s, border-color 0.15s; }
+.story-card:hover { border-color: #ccc; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+.card-image { width: 100%; height: 180px; object-fit: cover; display: block; }
+
+.card-body { padding: 14px 16px 12px; }
+
+.card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+.card-tag { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.4px; text-transform: uppercase; }
+.card-dot { width: 3px; height: 3px; border-radius: 50%; background: #ccc; }
+.card-time { font-size: 11px; color: #aaa; }
+
+.card-title { font-size: 17px; font-weight: 700; line-height: 1.4; color: #1a1a1a; margin-bottom: 8px; }
+
+/* AI SUMMARY — the key differentiator */
+.card-summary { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 12px; padding: 10px 12px; background: #f7f7f5; border-radius: 6px; border-right: 3px solid #185FA5; }
+.card-summary-label { display: none; }
+
+/* BIAS + SOURCES ROW */
+.card-footer { display: flex; align-items: center; gap: 12px; }
+.bias-wrap { flex: 1; }
+.bias-bar { height: 4px; border-radius: 2px; overflow: hidden; display: flex; margin-bottom: 3px; }
 .bar-l { background: #C94B7B; }
-.bar-c { background: #999; }
+.bar-c { background: #ccc; }
 .bar-r { background: #185FA5; }
-.card-bias-labels { display: flex; justify-content: space-between; font-size: 11px; }
-.card-bias-labels .l { color: #C94B7B; }
-.card-bias-labels .c { color: #999; }
-.card-bias-labels .r { color: #185FA5; }
-.card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid #f0f0f0; }
-.source-logos { display: flex; gap: 6px; align-items: center; }
-.source-logo { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
-.source-count { font-size: 12px; color: #888; }
-.card-time { font-size: 12px; color: #aaa; }
-.placeholder-card { background: #fff; border-radius: 14px; border: 1px dashed #ddd; margin-bottom: 16px; padding: 32px; text-align: center; color: #bbb; font-size: 14px; }
+.bias-labels { display: flex; justify-content: space-between; font-size: 10px; }
+.bias-labels .l { color: #C94B7B; }
+.bias-labels .c { color: #bbb; }
+.bias-labels .r { color: #185FA5; }
+.source-pills { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
+.source-pill { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; }
+.source-count { font-size: 11px; color: #aaa; }
+
+/* SINGLE SOURCE BADGE */
+.single-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #E65100; background: #FFF3E0; padding: 3px 8px; border-radius: 20px; font-weight: 600; margin-bottom: 10px; }
+
 @media(max-width:600px) {
-  nav { padding: 0 16px; }
-  .nav-links { display: none; }
-  .card-title { font-size: 17px; }
-  .card-image { height: 170px; }
+  .card-image { height: 150px; }
+  .card-title { font-size: 16px; }
 }
 </style>
 </head>
@@ -55,126 +71,127 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 
 <nav>
   <a class="nav-logo" href="home.html">פוזי<span>ציה</span></a>
-  <div class="nav-links">
-    <a href="#">ראשי</a>
-    <a href="#">פוליטיקה</a>
-    <a href="#">ביטחון</a>
-    <a href="#">כלכלה</a>
-    <a href="#">Blindspot</a>
-  </div>
-  <button class="nav-subscribe">הצטרף לבטא</button>
+  <button class="nav-cta">הצטרף לבטא</button>
 </nav>
 
-<div class="topics-bar">
-  <a class="topic-pill active" href="#">הכל</a>
-  <a class="topic-pill" href="#">פוליטיקה</a>
-  <a class="topic-pill" href="#">ביטחון</a>
-  <a class="topic-pill" href="#">לבנון</a>
-  <a class="topic-pill" href="#">איראן</a>
-  <a class="topic-pill" href="#">כלכלה</a>
-  <a class="topic-pill" href="#">משפט</a>
-  <a class="topic-pill" href="#">עולם</a>
-</div>
+<div class="date-bar">ראשון, 28 ביוני 2026</div>
 
-<div class="date-header">ראשון, 28 ביוני 2026</div>
+<div class="hero-message">
+  <h1 class="hero-h1">הבינו את החדשות. לא רק תקראו אותן.</h1>
+  <p class="hero-sub">כל סיפור נאסף ממספר מקורות, מסוכם בצורה ברורה ומציג נקודות מבט שונות – כדי שתוכלו להבין מהר מה באמת קרה.</p>
+</div>
 
 <div class="feed">
 
+  <!-- STORY 1 -->
   <a class="story-card" href="story-lebanon.html">
     <img class="card-image" src="lebanon-and-israel.png" alt="הסכם לבנון" onerror="this.style.background='#c8d8e8';">
     <div class="card-body">
-      <div class="card-tag">ביטחון · לבנון</div>
-      <div class="card-title">הסכם המסגרת עם לבנון — ניצחון היסטורי או מצב ביניים?</div>
-      <div class="card-summary">ישראל ולבנון חתמו בוושינגטון על הסכם מסגרת. ישראל תישאר ברצועת הביטחון עד לפירוק חיזבאללה. חיזבאללה אינו צד להסכם.</div>
-      <div class="card-bias">
-        <div class="card-bias-bar">
-          <div class="bar-l" style="width:40%;"></div>
-          <div class="bar-c" style="width:20%;"></div>
-          <div class="bar-r" style="width:40%;"></div>
-        </div>
-        <div class="card-bias-labels">
-          <span class="l">שמאל 40%</span>
-          <span class="c">מרכז 20%</span>
-          <span class="r">ימין 40%</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div class="source-logos">
-            <div class="source-logo" style="background:#1a1a1a;">הא</div>
-            <div class="source-logo" style="background:#E8242E;">ידה</div>
-            <div class="source-logo" style="background:#E8242E;">yn</div>
-            <div class="source-logo" style="background:#555;">מע</div>
-            <div class="source-logo" style="background:#1A3A6B;">מק</div>
-          </div>
-          <span class="source-count">5 מקורות</span>
-        </div>
+      <div class="card-meta">
+        <span class="card-tag">ביטחון · לבנון</span>
+        <span class="card-dot"></span>
         <span class="card-time">לפני 3 שעות</span>
       </div>
+      <div class="card-title">הסכם המסגרת עם לבנון — ניצחון היסטורי או מצב ביניים?</div>
+      <div class="card-summary">
+        <div class="card-summary-label">סיכום AI</div>
+        ישראל ולבנון חתמו בוושינגטון על הסכם מסגרת. ישראל תישאר בדרום לבנון עד לפירוק חיזבאללה. חיזבאללה אינו צד להסכם — וזה הסיכון המרכזי.
+      </div>
+      <div class="card-footer">
+        <div class="bias-wrap">
+          <div class="bias-bar">
+            <div class="bar-l" style="width:40%;"></div>
+            <div class="bar-c" style="width:20%;"></div>
+            <div class="bar-r" style="width:40%;"></div>
+          </div>
+          <div class="bias-labels">
+            <span class="l">שמאל 40%</span>
+            <span class="c">מרכז 20%</span>
+            <span class="r">ימין 40%</span>
+          </div>
+        </div>
+        <div class="source-pills">
+          <div class="source-pill" style="background:#1a1a1a;">הא</div>
+          <div class="source-pill" style="background:#E8242E;">yn</div>
+          <div class="source-pill" style="background:#E8242E;">ידה</div>
+          <div class="source-pill" style="background:#555;">מע</div>
+          <div class="source-pill" style="background:#1A3A6B;">מק</div>
+          <span class="source-count">5</span>
+        </div>
+      </div>
     </div>
   </a>
 
+  <!-- STORY 2 -->
   <a class="story-card" href="story-crime.html">
-    <img class="card-image" src="crime-holon.jpg" alt="פשיעה בחברה הערבית" onerror="this.style.background='#555';">
+    <img class="card-image" src="crime-holon.jpg" alt="פשיעה" onerror="this.style.background='#444';">
     <div class="card-body">
-      <div class="card-tag">פשיעה · חברה ערבית</div>
-      <div class="card-title">5 נרצחים בפחות מחצי יממה — יום מדמם במיוחד</div>
-      <div class="card-summary">חמישה נרצחים בארבע זירות שונות — טייבה, יפו, קלנסווה וחולון. 141 נרצחו מתחילת 2026.</div>
-      <div class="card-bias">
-        <div class="card-bias-bar">
-          <div class="bar-l" style="width:33%;"></div>
-          <div class="bar-c" style="width:34%;"></div>
-          <div class="bar-r" style="width:33%;"></div>
-        </div>
-        <div class="card-bias-labels">
-          <span class="l">שמאל 33%</span>
-          <span class="c">מרכז 34%</span>
-          <span class="r">ימין 33%</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div class="source-logos">
-            <div class="source-logo" style="background:#E8242E;">yn</div>
-            <div class="source-logo" style="background:#003087;">מע</div>
-            <div class="source-logo" style="background:#CC0000;">14</div>
-          </div>
-          <span class="source-count">3 מקורות</span>
-        </div>
+      <div class="card-meta">
+        <span class="card-tag">פשיעה · חברה ערבית</span>
+        <span class="card-dot"></span>
         <span class="card-time">לפני 2 שעות</span>
       </div>
-    </div>
-  </a>
-
-  <a class="story-card" href="story-qatar.html">
-    <img class="card-image" src="qatar-elbit.jpg" alt="נשק ישראלי לקטאר" onerror="this.style.background='#1a2a4a';">
-    <div class="card-body">
-      <div class="card-tag">ביטחון · חשיפה</div>
-      <div class="card-title">מסמכים חושפים: מערכות נשק ישראליות נמכרו לקטאר ולסעודיה</div>
-      <div class="card-summary">אלביט והתעשייה האווירית מכרו מערכות הגנה ורכיבים למטוסי F15 לשתי המדינות — שאין לישראל עמן יחסים דיפלומטיים רשמיים.</div>
-      <div class="card-bias">
-        <div class="card-bias-bar">
-          <div class="bar-l" style="width:100%;"></div>
-        </div>
-        <div class="card-bias-labels">
-          <span class="l">שמאל 100%</span>
-          <span class="c"></span>
-          <span class="r"></span>
-        </div>
+      <div class="card-title">5 נרצחים בפחות מחצי יממה — יום מדמם במיוחד</div>
+      <div class="card-summary">
+        <div class="card-summary-label">סיכום AI</div>
+        חמישה נרצחים בארבע זירות — טייבה, יפו, קלנסווה וחולון. 141 נרצחו מתחילת 2026. האלימות מתפשטת לערים יהודיות.
       </div>
       <div class="card-footer">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div class="source-logos">
-            <div class="source-logo" style="background:#1a1a1a;">הא</div>
+        <div class="bias-wrap">
+          <div class="bias-bar">
+            <div class="bar-l" style="width:33%;"></div>
+            <div class="bar-c" style="width:34%;"></div>
+            <div class="bar-r" style="width:33%;"></div>
           </div>
-          <span class="source-count">מקור אחד בלבד</span>
+          <div class="bias-labels">
+            <span class="l">שמאל 33%</span>
+            <span class="c">מרכז 34%</span>
+            <span class="r">ימין 33%</span>
+          </div>
         </div>
-        <span class="card-time">לפני 5 שעות</span>
+        <div class="source-pills">
+          <div class="source-pill" style="background:#E8242E;">yn</div>
+          <div class="source-pill" style="background:#003087;">מע</div>
+          <div class="source-pill" style="background:#CC0000;">14</div>
+          <span class="source-count">3</span>
+        </div>
       </div>
     </div>
   </a>
 
-  <div class="placeholder-card">כתבה נוספת תתווסף כאן · הזן תוכן ידנית</div>
+  <!-- STORY 3 -->
+  <a class="story-card" href="story-qatar.html">
+    <img class="card-image" src="qatar-elbit.jpg" alt="קטאר" onerror="this.style.background='#1a2a4a';">
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="card-tag">ביטחון · חשיפה</span>
+        <span class="card-dot"></span>
+        <span class="card-time">לפני 5 שעות</span>
+      </div>
+      <div class="card-title">מסמכים חושפים: נשק ישראלי מתקדם נמכר לקטאר ולסעודיה</div>
+      <div class="card-summary">
+        <div class="card-summary-label">סיכום AI</div>
+        אלביט והתעשייה האווירית מכרו מערכות הגנה ומטוסי קרב למדינות שאין לישראל עמן יחסים דיפלומטיים — בעסקות של מאות מיליוני דולרים.
+      </div>
+      <div class="single-badge">⚠ מקור אחד בלבד — הארץ</div>
+      <div class="card-footer">
+        <div class="bias-wrap">
+          <div class="bias-bar">
+            <div class="bar-l" style="width:100%;"></div>
+          </div>
+          <div class="bias-labels">
+            <span class="l">שמאל 100%</span>
+            <span class="c"></span>
+            <span class="r"></span>
+          </div>
+        </div>
+        <div class="source-pills">
+          <div class="source-pill" style="background:#1a1a1a;">הא</div>
+          <span class="source-count">1</span>
+        </div>
+      </div>
+    </div>
+  </a>
 
 </div>
 
