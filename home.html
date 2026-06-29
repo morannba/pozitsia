@@ -8,42 +8,25 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f7f7f5; color: #1a1a1a; }
-
-/* NAV */
 nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
 .nav-logo { font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
 .nav-logo span { color: #185FA5; }
 .nav-cta { background: #185FA5; color: #fff; border: none; padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'Heebo', sans-serif; }
-
-/* DATE BAR */
 .date-bar { padding: 12px 24px; font-size: 12px; color: #999; border-bottom: 1px solid #eee; background: #fff; text-align: center; letter-spacing: 0.3px; }
 .hero-message { text-align: center; padding: 28px 24px 8px; max-width: 680px; margin: 0 auto; }
 .hero-h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3; }
 .hero-sub { font-size: 14px; color: #777; line-height: 1.6; }
-
-/* FEED */
 .feed { max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
-
-/* STORY CARD */
 .story-card { background: #fff; border-radius: 12px; border: 1px solid #e8e8e8; margin-bottom: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.15s, border-color 0.15s; }
 .story-card:hover { border-color: #ccc; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-
 .card-image { width: 100%; height: 180px; object-fit: cover; display: block; }
-
 .card-body { padding: 14px 16px 12px; }
-
 .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
 .card-tag { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.4px; text-transform: uppercase; }
 .card-dot { width: 3px; height: 3px; border-radius: 50%; background: #ccc; }
 .card-time { font-size: 11px; color: #aaa; }
-
 .card-title { font-size: 17px; font-weight: 700; line-height: 1.4; color: #1a1a1a; margin-bottom: 8px; }
-
-/* AI SUMMARY — the key differentiator */
 .card-summary { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 12px; padding: 10px 12px; background: #f7f7f5; border-radius: 6px; border-right: 3px solid #185FA5; }
-.card-summary-label { display: none; }
-
-/* BIAS + SOURCES ROW */
 .card-footer { display: flex; align-items: center; gap: 12px; }
 .bias-wrap { flex: 1; }
 .bias-bar { height: 4px; border-radius: 2px; overflow: hidden; display: flex; margin-bottom: 3px; }
@@ -57,14 +40,8 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
 .source-pills { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
 .source-pill { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; }
 .source-count { font-size: 11px; color: #aaa; }
-
-/* SINGLE SOURCE BADGE */
 .single-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #E65100; background: #FFF3E0; padding: 3px 8px; border-radius: 20px; font-weight: 600; margin-bottom: 10px; }
-
-@media(max-width:600px) {
-  .card-image { height: 150px; }
-  .card-title { font-size: 16px; }
-}
+@media(max-width:600px) { .card-image { height: 150px; } .card-title { font-size: 16px; } }
 </style>
 </head>
 <body>
@@ -74,7 +51,7 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
   <button class="nav-cta">הצטרף לבטא</button>
 </nav>
 
-<div class="date-bar">ראשון, 28 ביוני 2026</div>
+<div class="date-bar">שני, 29 ביוני 2026</div>
 
 <div class="hero-message">
   <h1 class="hero-h1">הבינו את החדשות. לא רק תקראו אותן.</h1>
@@ -83,7 +60,40 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
 
 <div class="feed">
 
-  <!-- STORY 1 -->
+  <a class="story-card" href="story-hormuz.html">
+    <img class="card-image" src="hormuz.jpg" alt="מצר הורמוז" onerror="this.style.background='#1a3a5a';">
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="card-tag">דיפלומטיה · איראן</span>
+        <span class="card-dot"></span>
+        <span class="card-time">לפני שעה</span>
+      </div>
+      <div class="card-title">טראמפ: איראן ביקשה פגישה מחר בדוחא. טהרן: לא אושר כלום</div>
+      <div class="card-summary">אחרי חילופי תקיפות במצר הורמוז שאיימו לפורר את הפסקת האש — ארה"ב ואיראן מציגות גרסאות סותרות. ויטקוף וקושנר יטוסו לקטאר.</div>
+      <div class="card-footer">
+        <div class="bias-wrap">
+          <div class="bias-bar">
+            <div class="bar-l" style="width:25%;"></div>
+            <div class="bar-c" style="width:50%;"></div>
+            <div class="bar-r" style="width:25%;"></div>
+          </div>
+          <div class="bias-labels">
+            <span class="l">שמאל 25%</span>
+            <span class="c">מרכז 50%</span>
+            <span class="r">ימין 25%</span>
+          </div>
+        </div>
+        <div class="source-pills">
+          <div class="source-pill" style="background:#1a1a1a;">הא</div>
+          <div class="source-pill" style="background:#E8242E;">yn</div>
+          <div class="source-pill" style="background:#E8242E;">ידה</div>
+          <div class="source-pill" style="background:#003087;">מע</div>
+          <span class="source-count">4</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
   <a class="story-card" href="story-lebanon.html">
     <img class="card-image" src="lebanon-and-israel.png" alt="הסכם לבנון" onerror="this.style.background='#c8d8e8';">
     <div class="card-body">
@@ -93,10 +103,7 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
         <span class="card-time">לפני 3 שעות</span>
       </div>
       <div class="card-title">הסכם המסגרת עם לבנון — ניצחון היסטורי או מצב ביניים?</div>
-      <div class="card-summary">
-        <div class="card-summary-label">סיכום AI</div>
-        ישראל ולבנון חתמו בוושינגטון על הסכם מסגרת. ישראל תישאר בדרום לבנון עד לפירוק חיזבאללה. חיזבאללה אינו צד להסכם — וזה הסיכון המרכזי.
-      </div>
+      <div class="card-summary">ישראל ולבנון חתמו בוושינגטון על הסכם מסגרת. ישראל תישאר בדרום לבנון עד לפירוק חיזבאללה. חיזבאללה אינו צד להסכם — וזה הסיכון המרכזי.</div>
       <div class="card-footer">
         <div class="bias-wrap">
           <div class="bias-bar">
@@ -122,7 +129,6 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
     </div>
   </a>
 
-  <!-- STORY 2 -->
   <a class="story-card" href="story-crime.html">
     <img class="card-image" src="crime-holon.jpg" alt="פשיעה" onerror="this.style.background='#444';">
     <div class="card-body">
@@ -132,10 +138,7 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
         <span class="card-time">לפני 2 שעות</span>
       </div>
       <div class="card-title">5 נרצחים בפחות מחצי יממה — יום מדמם במיוחד</div>
-      <div class="card-summary">
-        <div class="card-summary-label">סיכום AI</div>
-        חמישה נרצחים בארבע זירות — טייבה, יפו, קלנסווה וחולון. 141 נרצחו מתחילת 2026. האלימות מתפשטת לערים יהודיות.
-      </div>
+      <div class="card-summary">חמישה נרצחים בארבע זירות — טייבה, יפו, קלנסווה וחולון. 141 נרצחו מתחילת 2026. האלימות מתפשטת לערים יהודיות.</div>
       <div class="card-footer">
         <div class="bias-wrap">
           <div class="bias-bar">
@@ -159,7 +162,6 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
     </div>
   </a>
 
-  <!-- STORY 3 -->
   <a class="story-card" href="story-qatar.html">
     <img class="card-image" src="qatar-elbit.jpg" alt="קטאר" onerror="this.style.background='#1a2a4a';">
     <div class="card-body">
@@ -169,10 +171,7 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
         <span class="card-time">לפני 5 שעות</span>
       </div>
       <div class="card-title">מסמכים חושפים: נשק ישראלי מתקדם נמכר לקטאר ולסעודיה</div>
-      <div class="card-summary">
-        <div class="card-summary-label">סיכום AI</div>
-        אלביט והתעשייה האווירית מכרו מערכות הגנה ומטוסי קרב למדינות שאין לישראל עמן יחסים דיפלומטיים — בעסקות של מאות מיליוני דולרים.
-      </div>
+      <div class="card-summary">אלביט והתעשייה האווירית מכרו מערכות הגנה למדינות שאין לישראל עמן יחסים דיפלומטיים — בעסקות של מאות מיליוני דולרים.</div>
       <div class="single-badge">⚠ מקור אחד בלבד — הארץ</div>
       <div class="card-footer">
         <div class="bias-wrap">
