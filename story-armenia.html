@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ישראל מכירה ברצח העם הארמני — פוזיציה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f7f7f5; color: #1a1a1a; }
+nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 48px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { font-size: 20px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
+.nav-logo span { color: #185FA5; }
+.nav-back { font-size: 13px; color: #185FA5; text-decoration: none; }
+.hero { position: relative; width: 100%; height: 200px; overflow: hidden; }
+.hero img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+.hero-overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 16px 24px; background: linear-gradient(transparent 20%, rgba(0,0,0,0.8)); }
+.hero-date { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.hero-title { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.3; }
+.page { max-width: 1100px; margin: 0 auto; padding: 0 24px 48px; display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: start; }
+.summary-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 16px 20px; margin-top: 20px; margin-bottom: 16px; }
+.summary-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.summary-label { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.8px; text-transform: uppercase; }
+.tabs { display: flex; gap: 2px; background: #f0f0ee; border-radius: 6px; padding: 3px; }
+.tab { padding: 4px 12px; border: none; background: none; font-size: 12px; font-weight: 500; color: #666; cursor: pointer; border-radius: 4px; font-family: 'Heebo', sans-serif; transition: all 0.15s; }
+.tab.active { background: #fff; color: #185FA5; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.tab-content { display: none; font-size: 14px; line-height: 1.65; color: #333; }
+.tab-content.active { display: block; }
+.bias-row { display: flex; align-items: center; gap: 12px; padding: 10px 20px; background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; margin-bottom: 16px; }
+.bias-stat { font-size: 12px; color: #888; white-space: nowrap; }
+.bias-bar-wrap { flex: 1; height: 5px; border-radius: 3px; overflow: hidden; display: flex; }
+.bar-l { background: #C94B7B; }
+.bar-c { background: #ccc; }
+.bar-r { background: #185FA5; }
+.bias-pcts { display: flex; justify-content: space-between; font-size: 11px; margin-top: 4px; }
+.bias-pcts .l { color: #C94B7B; font-weight: 600; }
+.bias-pcts .c { color: #999; }
+.bias-pcts .r { color: #185FA5; font-weight: 600; }
+.bias-inner { flex: 1; }
+.sources-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 8px; }
+.source-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; margin-bottom: 8px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.15s; }
+.source-card:hover { border-color: #bbb; }
+.source-badge { width: 32px; height: 32px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 1px; }
+.source-main { flex: 1; min-width: 0; }
+.source-top { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.source-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.source-writer { font-size: 11px; color: #aaa; }
+.lean-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.source-headline { font-size: 13px; font-weight: 600; color: #1a1a1a; line-height: 1.35; margin-bottom: 4px; }
+.source-angle { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 6px; }
+.source-link { font-size: 11px; color: #185FA5; text-decoration: none; }
+.source-link:hover { text-decoration: underline; }
+.sidebar { margin-top: 20px; position: sticky; top: 60px; }
+.sidebar-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+.sidebar-title { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px; }
+.coverage-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+.coverage-row:last-child { border-bottom: none; }
+.coverage-label { color: #555; }
+.coverage-val { font-weight: 600; color: #1a1a1a; }
+.logo-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.logo-sm { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; }
+@media(max-width: 700px) { .page { grid-template-columns: 1fr; } .sidebar { display: none; } .hero { height: 160px; } .hero-title { font-size: 17px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="home.html">פוזי<span>ציה</span></a>
+  <a class="nav-back" href="home.html">← כל הסיפורים</a>
+</nav>
+
+<div class="hero">
+  <img src="armenia.jpg" alt="רצח העם הארמני" onerror="this.style.background='#2a1a1a';">
+  <div class="hero-overlay">
+    <div>
+      <div class="hero-date">29 ביוני 2026 · דיפלומטיה · היסטוריה</div>
+      <h1 class="hero-title">ישראל הכירה ברצח העם הארמני — אזרבייג'ן זועמת וקוראת לחזור בה</h1>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="main-col">
+
+    <div class="summary-card">
+      <div class="summary-top">
+        <span class="summary-label">סיכום</span>
+        <div class="tabs">
+          <button class="tab active" onclick="showTab('center',event)">מרכז</button>
+          <button class="tab" onclick="showTab('left',event)">שמאל</button>
+          <button class="tab" onclick="showTab('right',event)">ימין</button>
+        </div>
+      </div>
+      <div id="tab-center" class="tab-content active">ממשלת ישראל אישרה פה אחד את הצעת שר החוץ סער להכיר ברצח העם הארמני. ההחלטה עוררה גינוי חריף מאזרבייג'ן, בעלת ברית אסטרטגית של ישראל, שקראה לחזור בה. ההצעה תובא לאישור הכנסת.</div>
+      <div id="tab-left" class="tab-content">מעריב מציג את ההכרה כצעד מוסרי היסטורי. שגריר ארמניה לשעבר כותב כי ישראל מיישרת קו עם הסטנדרטים המוסריים שדרשה ממדינות אחרות — וכי ההכחשה האידיאולוגית של הטבח הארמני היא מסוכנת.</div>
+      <div id="tab-right" class="tab-content">ישראל היום מדגיש את המחיר האסטרטגי: אזרבייג'ן, בעלת הברית שגובלת עם איראן ושותפה לעסקאות נשק ענקיות, גינתה את ישראל. גם טורקיה תקפה. זו החלטה עם מחיר דיפלומטי כבד.</div>
+    </div>
+
+    <div class="bias-row">
+      <span class="bias-stat">3 מקורות</span>
+      <div class="bias-inner">
+        <div class="bias-bar-wrap">
+          <div class="bar-l" style="width:33%;"></div>
+          <div class="bar-c" style="width:34%;"></div>
+          <div class="bar-r" style="width:33%;"></div>
+        </div>
+        <div class="bias-pcts">
+          <span class="l">שמאל 33%</span>
+          <span class="c">מרכז 34%</span>
+          <span class="r">ימין 33%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sources-label">כיסוי לפי מקור</div>
+
+    <div class="source-card">
+      <div class="source-badge" style="background:#E8242E;">yn</div>
+      <div class="source-main">
+        <div class="source-top">
+          <span class="source-name">ynet</span>
+          <span class="lean-dot" style="background:#ccc;"></span>
+          <span class="source-writer">איתמר אייכנר</span>
+        </div>
+        <div class="source-headline">בעלת הברית של ישראל זועמת: "תשקלו מחדש את ההכרה ברצח העם הארמני"</div>
+        <div class="source-angle">מציג את הגינוי האזרי ואת המחיר האסטרטגי: אזרבייג'ן חיונית לישראל בגלל גבולה עם איראן ועסקאות נשק ענקיות. גם רב יהודי באקו גינה את ההחלטה.</div>
+        <a class="source-link" href="https://www.ynet.co.il/news/article/bydpoqjxzl#autoplay" target="_blank">קרא את הכתבה ←</a>
+      </div>
+    </div>
+
+    <div class="source-card">
+      <div class="source-badge" style="background:#003087;">מע</div>
+      <div class="source-main">
+        <div class="source-top">
+          <span class="source-name">מעריב</span>
+          <span class="lean-dot" style="background:#C94B7B;"></span>
+          <span class="source-writer">גריגור הובהניסיאן, שגריר ארמניה לשעבר</span>
+        </div>
+        <div class="source-headline">ההכרה הישראלית המאוחרת ברצח העם הארמני פותחת פרק חדש – וזה ראוי להוקרה</div>
+        <div class="source-angle">מאמר דעה של שגריר ארמניה לשעבר בארה"ב. מציג את ההכרה כתיקון מוסרי ומשבח את ישראל. מדגיש את הקשר ההיסטורי בין שני העמים.</div>
+        <a class="source-link" href="https://www.maariv.co.il/news/opinions/article-1338501" target="_blank">קרא את הכתבה ←</a>
+      </div>
+    </div>
+
+    <div class="source-card">
+      <div class="source-badge" style="background:#E8242E;">ידה</div>
+      <div class="source-main">
+        <div class="source-top">
+          <span class="source-name">ישראל היום</span>
+          <span class="lean-dot" style="background:#185FA5;"></span>
+          <span class="source-writer">מערכת ישראל היום</span>
+        </div>
+        <div class="source-headline">בעלת הברית של ישראל זועמת: "תשקלו מחדש את ההכרה ברצח העם הארמני"</div>
+        <div class="source-angle">מדגיש את הריקושט הדיפלומטי: גינוי אזרבייג'ן, גינוי טורקיה, והשאלה האם ישראל שקלה את המחיר האסטרטגי של ההחלטה.</div>
+        <a class="source-link" href="https://www.israelhayom.co.il/news/geopolitics/article/20866937" target="_blank">קרא את הכתבה ←</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">פרטי כיסוי</div>
+      <div class="coverage-row"><span class="coverage-label">סה"כ מקורות</span><span class="coverage-val">3</span></div>
+      <div class="coverage-row"><span class="coverage-label">נוטה שמאל</span><span class="coverage-val" style="color:#C94B7B;">1</span></div>
+      <div class="coverage-row"><span class="coverage-label">מרכז</span><span class="coverage-val" style="color:#999;">1</span></div>
+      <div class="coverage-row"><span class="coverage-label">נוטה ימין</span><span class="coverage-val" style="color:#185FA5;">1</span></div>
+      <div class="coverage-row"><span class="coverage-label">עודכן</span><span class="coverage-val">לפני 3 שעות</span></div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">מקורות</div>
+      <div class="logo-grid">
+        <div class="logo-sm" style="background:#E8242E;">yn</div>
+        <div class="logo-sm" style="background:#003087;">מע</div>
+        <div class="logo-sm" style="background:#E8242E;">ידה</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(name, event) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
