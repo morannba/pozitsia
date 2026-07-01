@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ישראל וחיזבאללה: האם הלחץ הצבאי באמת עובד? | תמונת מצב — פוזיציה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0D3F7A;
+  --blue: #185FA5;
+  --light-blue: #EEF4FC;
+  --border: #E4E2D8;
+  --text: #1a1a1a;
+  --muted: #6B6A62;
+  --bg: #F7F6F2;
+  --white: #fff;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  height: 52px; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo { font-size: 20px; font-weight: 700; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--blue); }
+.nav-back { font-size: 13px; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 4px; }
+
+/* ── WRAPPER ── */
+.wrapper { max-width: 720px; margin: 0 auto; padding: 0 24px 100px; }
+
+/* ── TOP LABEL ── */
+.top-label {
+  display: flex; align-items: center; gap: 10px;
+  padding: 28px 0 20px;
+}
+.label-badge {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--blue);
+  background: var(--light-blue); border: 1px solid #C8DDEF;
+  padding: 4px 12px; border-radius: 20px;
+}
+.label-line { flex: 1; height: 1px; background: var(--border); }
+
+/* ── HEADLINE BLOCK ── */
+.headline-block { margin-bottom: 28px; }
+
+.headline {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  font-size: 38px; font-weight: 900; line-height: 1.2;
+  color: var(--text); margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 18px; color: var(--muted);
+  line-height: 1.6; font-weight: 400;
+  border-right: 3px solid var(--border);
+  padding-right: 16px;
+}
+
+/* ── SYNTHESIS STAMP ── */
+.synthesis-stamp {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 16px;
+  margin: 24px 0;
+}
+.stamp-icon { font-size: 28px; flex-shrink: 0; }
+.stamp-body { }
+.stamp-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: rgba(255,255,255,0.45);
+  margin-bottom: 3px;
+}
+.stamp-text {
+  font-size: 15px; font-weight: 600; color: #fff; line-height: 1.3;
+}
+
+/* ── META ── */
+.meta-bar {
+  display: flex; align-items: center; gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 0 0 32px; padding: 12px 0;
+  flex-wrap: wrap;
+}
+.meta-item {
+  font-size: 12px; color: var(--muted);
+  padding: 0 16px; border-left: 1px solid var(--border);
+  line-height: 1.3;
+}
+.meta-item:first-child { padding-right: 0; border-left: none; }
+.meta-item strong { display: block; color: var(--text); font-weight: 600; font-size: 13px; }
+
+/* ── HERO ── */
+.hero {
+  width: 100%; height: 280px;
+  background: linear-gradient(135deg, #1a2a3a 0%, #0D3F7A 100%);
+  border-radius: 12px; margin-bottom: 28px;
+  display: flex; align-items: flex-end;
+  overflow: hidden; position: relative;
+}
+.hero-caption {
+  padding: 16px; font-size: 11px;
+  color: rgba(255,255,255,0.45); width: 100%;
+}
+
+/* ── INSTITUTIONS ── */
+.institutions { margin-bottom: 36px; }
+.inst-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+}
+.inst-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.inst-badge {
+  font-size: 13px; font-weight: 700; color: var(--navy);
+  background: var(--white); border: 1.5px solid #C8DDEF;
+  padding: 6px 16px; border-radius: 8px; letter-spacing: 0.2px;
+}
+.inst-sep { color: var(--border); font-size: 18px; }
+
+/* ── EXEC SUMMARY ── */
+.exec {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+}
+.exec-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+.exec-heading {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  font-size: 20px; font-weight: 700; color: #fff;
+  margin-bottom: 24px; line-height: 1.3;
+}
+.takeaway {
+  display: flex; gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.takeaway:last-child { border-bottom: none; padding-bottom: 0; }
+.takeaway-n {
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.25);
+  min-width: 20px; padding-top: 3px; font-variant-numeric: tabular-nums;
+}
+.takeaway-t { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.65; }
+.takeaway-t strong { color: #fff; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 48px; }
+
+.section-q {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 6px;
+}
+
+.section-h {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  font-size: 24px; font-weight: 700; color: var(--text);
+  margin-bottom: 20px; line-height: 1.3;
+}
+
+.section-h::after {
+  content: "";
+  display: block;
+  width: 36px; height: 2px;
+  background: var(--blue);
+  margin-top: 10px;
+}
+
+p { margin-bottom: 18px; color: #2a2a2a; font-size: 15.5px; line-height: 1.8; }
+p:last-child { margin-bottom: 0; }
+
+/* ── CALLOUT ── */
+.callout {
+  background: var(--light-blue);
+  border-right: 3px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 24px 0;
+  font-size: 14.5px; color: var(--navy);
+  line-height: 1.7;
+}
+.callout strong { display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.3px; margin-bottom: 6px; color: var(--navy); text-transform: uppercase; font-size: 10px; letter-spacing: 1px; }
+
+/* ── PULL QUOTE ── */
+.pullquote {
+  margin: 28px 0;
+  padding: 0 24px;
+  border-right: 2px solid var(--text);
+}
+.pullquote-text {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  font-size: 20px; line-height: 1.5; color: var(--text);
+  font-weight: 500; margin-bottom: 10px;
+}
+.pullquote-attr {
+  font-size: 12px; color: var(--muted); font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ── CONCLUSION HIGHLIGHT ── */
+.conclusion {
+  background: #FAFAF8;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+.conclusion-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.conclusion-text {
+  font-size: 15px; color: var(--text); line-height: 1.65; font-weight: 500;
+}
+
+/* ── WATCH LIST ── */
+.watch-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.watch-item:last-child { border-bottom: none; }
+.watch-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.watch-body { }
+.watch-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.watch-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin: 0; }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px; background: var(--border);
+  margin: 48px 0;
+  position: relative;
+}
+.divider::after {
+  content: "✦";
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg); padding: 0 10px;
+  font-size: 10px; color: var(--border);
+}
+
+/* ── PERSPECTIVE ── */
+.perspective {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px 28px; margin-bottom: 48px;
+}
+.perspective-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+}
+.perspective-text {
+  font-size: 14px; color: #3a3a3a; line-height: 1.7; margin-bottom: 20px;
+}
+.pbar { height: 6px; border-radius: 3px; overflow: hidden; display: flex; margin-bottom: 8px; }
+.pb-l { background: #C94B7B; }
+.pb-c { background: #B4B2A9; }
+.pb-r { background: var(--blue); }
+.plabels { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; }
+.plabels .l { color: #C94B7B; }
+.plabels .c { color: var(--muted); }
+.plabels .r { color: var(--blue); }
+.pinst-row { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+.pinst {
+  font-size: 11px; color: var(--muted);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 3px 10px; border-radius: 6px;
+}
+.pinst span { color: var(--text); font-weight: 600; }
+
+/* ── SOURCES ── */
+.sources-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+}
+.source-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 20px; margin-bottom: 10px;
+  text-decoration: none; color: inherit; display: block;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.source-card:hover { border-color: var(--blue); box-shadow: 0 2px 12px rgba(24,95,165,0.07); }
+.source-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.source-inst-badge {
+  font-size: 10px; font-weight: 700; color: var(--blue);
+  background: var(--light-blue); border: 1px solid #C8DDEF;
+  padding: 2px 8px; border-radius: 5px; letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+.source-author { font-size: 12px; color: var(--muted); }
+.source-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+.source-bottom { display: flex; align-items: center; justify-content: space-between; }
+.source-date { font-size: 11px; color: var(--muted); }
+.source-link { font-size: 12px; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 3px; }
+
+/* ── RELATED ── */
+.related-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 22px;
+  text-decoration: none; color: inherit; display: block;
+  transition: border-color 0.15s;
+}
+.related-card:hover { border-color: var(--blue); }
+.related-type { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+.related-title { font-family: 'Frank Ruhl Libre', Georgia, serif; font-size: 17px; font-weight: 700; color: var(--text); }
+
+@media (max-width: 640px) {
+  .headline { font-size: 28px; }
+  .exec { padding: 20px; }
+  .hero { height: 180px; }
+  .synthesis-stamp { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="home.html">פוזי<span>ציה</span></a>
+  <a class="nav-back" href="home.html">← חזרה</a>
+</nav>
+
+<div class="wrapper">
+
+  <!-- TOP LABEL -->
+  <div class="top-label">
+    <span class="label-badge">🧠 תמונת מצב</span>
+    <div class="label-line"></div>
+    <span style="font-size:11px;color:var(--muted);white-space:nowrap;">ניתוח גיאופוליטי</span>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline-block">
+    <h1 class="headline">ישראל וחיזבאללה:<br>האם הלחץ הצבאי באמת עובד?</h1>
+    <p class="subtitle">ניתוח משולב של INSS, CSIS ו-RUSI על יעילות האסטרטגיה הנוכחית, מגבלות הכפייה הצבאית, ומה נדרש כדי שהמצב הנוכחי יוביל לשינוי מבני אמיתי.</p>
+  </div>
+
+  <!-- SYNTHESIS STAMP -->
+  <div class="synthesis-stamp">
+    <div class="stamp-icon">🧠</div>
+    <div class="stamp-body">
+      <div class="stamp-eyebrow">סינתזה של פוזיציה</div>
+      <div class="stamp-text">מבוסס על 3 מכוני מחקר ו-32+ עמודי מחקר — מסוכם בשבילכם</div>
+    </div>
+  </div>
+
+  <!-- META -->
+  <div class="meta-bar">
+    <div class="meta-item">
+      <strong>יוני–יולי 2026</strong>
+      עודכן
+    </div>
+    <div class="meta-item">
+      <strong>~8 דקות</strong>
+      זמן קריאה
+    </div>
+    <div class="meta-item">
+      <strong>3 מכונים</strong>
+      מקורות מחקר
+    </div>
+    <div class="meta-item">
+      <strong>INSS · CSIS · RUSI</strong>
+      מוסדות
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-caption">דרום לבנון, 2026 — אזור החיץ</div>
+  </div>
+
+  <!-- INSTITUTIONS -->
+  <div class="institutions">
+    <div class="inst-label">מבוסס על מחקרים מ:</div>
+    <div class="inst-row">
+      <span class="inst-badge">INSS</span>
+      <span class="inst-sep">·</span>
+      <span class="inst-badge">CSIS</span>
+      <span class="inst-sep">·</span>
+      <span class="inst-badge">RUSI</span>
+    </div>
+  </div>
+
+  <!-- EXEC SUMMARY -->
+  <div class="exec">
+    <div class="exec-eyebrow">הבינו הכל תוך דקה</div>
+    <div class="exec-heading">5 נקודות שחשוב לדעת לפני שמתחילים לקרוא</div>
+
+    <div class="takeaway">
+      <span class="takeaway-n">01</span>
+      <span class="takeaway-t"><strong>חיזבאללה נחלש — אך לא קרס.</strong> מנהיגות הוכחדה, יכולת הרתעה נפגעה, תמיכת השיעים ירדה. אך הארגון חוזר למודל גרילה שהוכיח את עצמו בעבר.</span>
+    </div>
+    <div class="takeaway">
+      <span class="takeaway-n">02</span>
+      <span class="takeaway-t"><strong>הלחץ הצבאי לבדו לא יפרק את הנשק.</strong> אם המדינה הלבנונית לא תמלא את החלל, חיזבאללה ינצל את חולשתה כטיעון להמשיך להתקיים.</span>
+    </div>
+    <div class="takeaway">
+      <span class="takeaway-n">03</span>
+      <span class="takeaway-t"><strong>ארה"ב תקועה בסתירה.</strong> לחזק את לבנון — מול הממשלה. להשיג שקט — מול חיזבאללה. לקדם הסכם — מול איראן. שלוש מטרות שמתנגשות.</span>
+    </div>
+    <div class="takeaway">
+      <span class="takeaway-n">04</span>
+      <span class="takeaway-t"><strong>מלחמת כטב"מים יוצרת אסקלציה עצמאית.</strong> המחזור של חדשנות ונגד-חדשנות מתנהל לפי ההיגיון שלו, לאו דווקא לפי אסטרטגיה פוליטית.</span>
+    </div>
+    <div class="takeaway">
+      <span class="takeaway-n">05</span>
+      <span class="takeaway-t"><strong>החלון ההיסטורי מצטמצם.</strong> ממשלה לבנונית חדשה, יישור קו בינלאומי נדיר, חיזבאללה מוחלש — אם ההזדמנות לא תנוצל עכשיו, לבנון עלולה לחזור לדפוסי 1982–2000.</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-q">מה השתנה?</div>
+    <h2 class="section-h">חיזבאללה ב-2026: חלש יותר, אך לא שבור</h2>
+
+    <p>מסעות ישראל ב-2024 וב-2026 הסבו נזק חמור: רוב המנהיגות הבכירה הוכחדה, רשתות המנהרות הושמדו, וכוח הרדואן צומצם. יכולת הרתעתו של הארגון — שעמדה בבסיס האסטרטגיה שלו מאז 2006 — נחשפה כמוגבלת.</p>
+
+    <p>אך חיזבאללה לא קרס. לפי RUSI, הארגון חזר לשורשיו כארגון גרילה, ואיראן פרסה מאות מפקדי משמרות המהפכה לשחזר ולארגן מחדש את המבנה — תוך מיזוג לוחמים סורים ועיראקים ביחידותיו.</p>
+
+    <div class="callout">
+      <strong>שינוי אסטרטגי מפתח</strong>
+      חיזבאללה עבר מ"רתע עצמאי" ל"כוח תמיכה" — מתאם ירי לצד מתקפות ישירות של איראן. RUSI מציין שזהו שינוי עמוק: תפקידו האסטרטגי ירד, והמקרה לשמירת נשקו הכבד נחלש בהתאם.
+    </div>
+
+    <p>במקביל, הממשלה הלבנונית החדשה — הנשיא עוון וראש הממשלה סלאם — הכריזה ב-2 במרץ 2026 על איסור פעילות צבאית של חיזבאללה. זו ההצהרה הנחרצת ביותר שממשלה לבנונית אי פעם ניסחה. אך הפער בין ההצהרה לבין יכולת האכיפה נותר עמוק.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-q">איפה המכונים מסכימים?</div>
+    <h2 class="section-h">נקודת הסכמה: הצבא לא מספיק</h2>
+
+    <p>שלושת המכונים מסכימים על עיקרון מרכזי אחד: לחץ צבאי לבדו לא יפרק את חיזבאללה.</p>
+
+    <p>הבעיה אינה הנשק — היא היעדר המדינה. כל עוד המדינה הלבנונית אינה מסוגלת לספק ביטחון, שירותים ויציבות כלכלית לקהילות השיעיות בדרום, חיזבאללה תמשיך להציג את נשקה כהכרח הגנתי.</p>
+
+    <div class="pullquote">
+      <div class="pullquote-text">"אם המדינה לא תוכל לספק ביטחון, חיזבאללה ישרוד על ידי הפיכת חולשתה לטיעון המרכזי שלו."</div>
+      <div class="pullquote-attr">RUSI, יוני 2026</div>
+    </div>
+
+    <p>כולם מסכימים גם שהחלון ההיסטורי הנוכחי הוא נדיר: יישור קו בינלאומי (ארה"ב, בריטניה, מדינות המפרץ), ממשלה לבנונית חדשה עם נכונות מוצהרת, וחיזבאללה מוחלש — שילוב שלא התקיים בדור האחרון.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <div class="section-q">איפה המכונים חולקים?</div>
+    <h2 class="section-h">שלוש זוויות, שלוש מחלוקות</h2>
+
+    <p>כאן מתגלה הפצל המשמעותי: עד כמה הלחץ הצבאי הנוכחי מסייע לתהליך, ועד כמה הוא פוגע בו?</p>
+
+    <div class="callout">
+      <strong>RUSI — הסיכון הנרטיבי</strong>
+      ישראל ניצחה בסיבוב הצבאי, אך ייתכן שמפסידה במאבק על התודעה. תיעודים על שמד בתים בדרום לבנון, לצד פעולות ישראליות מעבר לאזור החיץ שהיא עצמה הכריזה עליו, מחזקים בדיוק את הסיפור שחיזבאללה מספר: "המדינה לא יכולה להגן עליכם."
+    </div>
+
+    <div class="callout">
+      <strong>INSS — הדילמה האמריקאית</strong>
+      הבעיה המרכזית אינה ישראל — היא ארה"ב. וושינגטון מנסה לחזק את לבנון, לרסן את חיזבאללה ולהגיע להסכם עם איראן בו-זמנית. כשישראל תוקפת, ארה"ב נדרשת להגיב — ואיראן מנצלת את הפחד האמריקאי מאסקלציה כמנגנון לבלום את ישראל.
+    </div>
+
+    <div class="callout">
+      <strong>CSIS — שאלת "היום שאחרי"</strong>
+      מה בעצם פירוש פירוק נשק? אף תוכנית אמינה לא קיימת לחרמת כלי נשק קלים מבתים פרטיים בקהילות שיעיות. הניסיון של ה-IRA בצפון אירלנד וה-FARC בקולומביה מלמד: פירוק מצליח מחייב מעורבות פוליטית, לא כפייה בלבד.
+    </div>
+
+    <p>שלוש הזוויות אינן סותרות זו את זו — הן משלימות. ישראל זקוקה לרסן צבאי כדי לא לחתור תחת המדינה שתאמור לירש את החלל. ארה"ב זקוקה להגדיר כללי הפרדת זירות. ולבנון זקוקה לתוכנית פוליטית, לא רק לנוכחות צבאית.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <div class="section-q">מה המשמעות?</div>
+    <h2 class="section-h">שני תרחישים — ובניהם פחות זמן ממה שנדמה</h2>
+
+    <p>המחקרים מצביעים על שני קצוות אפשריים.</p>
+
+    <p><strong>התרחיש הגרוע:</strong> לבנון כ"גזה שנייה" — מדינה שנחרבה מספיק כדי שאף גוף לא יוכל לשלוט בה. RUSI מזכיר את אזור הביטחון 1985–2000 כאזהרה: כיבוש ממושך שסייע לבנות את חיזבאללה, לא לרסקו.</p>
+
+    <p><strong>התרחיש האופטימי:</strong> מסגרת DDR (פירוק, פיצול, ריאינטגרציה) מדורגת — תחילה הנשק האסטרטגי בדרום, לאחר מכן שלבים לכיוון צידון, בקעה ופרברי ביירות — בליווי השקעה מקבילה בכוחות ביטחון אזרחיים, לא רק בצבא.</p>
+
+    <div class="conclusion">
+      <div class="conclusion-label">מסקנה מרכזית</div>
+      <div class="conclusion-text">הזדמנות של דור — אם לא תנוצל בחודשים הקרובים, לבנון עלולה לשוב לאותה מערכת שיצרה את חיזבאללה מלכתחילה. לא בגלל שהמצב הצבאי ישתנה — אלא בגלל שהחלון הפוליטי ייסגר.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <div class="section-q">מה לעקוב אחריו?</div>
+    <h2 class="section-h">4 אינדיקטורים קריטיים</h2>
+
+    <div class="watch-item">
+      <span class="watch-icon">🔵</span>
+      <div class="watch-body">
+        <div class="watch-title">מנדט אוניפי"ל — פוקע סוף 2026</div>
+        <p class="watch-desc">האם יוסכם מנגנון ניטור חלופי לפני שאוניפי"ל יסתלק? הפער בין נסיגתה לבין כל הסדר חלופי הוא "הזדמנות של חיזבאללה להתחדש" — לפי RUSI.</p>
+      </div>
+    </div>
+
+    <div class="watch-item">
+      <span class="watch-icon">🔵</span>
+      <div class="watch-body">
+        <div class="watch-title">יכולת משרד הרווחה הלבנוני לאזורי הדרום</div>
+        <p class="watch-desc">האם המדינה תוכל לספק סיוע מזומן ישיר לקהילות בדרום? זה "החלון האמיתי" — כל עוד חיזבאללה ממלא את החלל הכלכלי, ציד הנשק לא ייצא מן הכוח אל הפועל.</p>
+      </div>
+    </div>
+
+    <div class="watch-item">
+      <span class="watch-icon">🔵</span>
+      <div class="watch-body">
+        <div class="watch-title">כללי הפרדת זירות — ישראל מול ארה"ב</div>
+        <p class="watch-desc">האם ישראל תקבל הבנה שתגובה ממוקדת להפרות חיזבאללה לא תיחשב כהפרת המסגרת הדיפלומטית עם טהרן? ללא הסכם כזה, איראן תמשיך לנהל את ה-veto דרך לבנון.</p>
+      </div>
+    </div>
+
+    <div class="watch-item">
+      <span class="watch-icon">🔵</span>
+      <div class="watch-body">
+        <div class="watch-title">עמדות איראן בשיחות לוצרן</div>
+        <p class="watch-desc">האם טהרן תסכים להוצאת IRGC מלבנון כחלק מהסכם רחב עם ארה"ב, או תעדיף לשמור את לבנון כ"קלף" מיקוח אחרון?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PERSPECTIVE -->
+  <div class="perspective">
+    <div class="perspective-label">פיזור נקודות מבט</div>
+    <div class="perspective-text">
+      סינתזה זו מאגדת מכונים המייצגים גישות שונות: <strong>INSS</strong> (ישראל — מנקודת מבט ביטחונית-ישראלית), <strong>CSIS</strong> (ושינגטון — ניתוח ממוקד בידועה של ארה"ב) ו-<strong>RUSI</strong> (בריטניה — ביקורתי יחסית כלפי הגישה הצבאית). ביחד הם מציעים תמונה שלמה יותר מכל מקור בנפרד.
+    </div>
+    <div class="pbar">
+      <div class="pb-l" style="width:40%"></div>
+      <div class="pb-c" style="width:34%"></div>
+      <div class="pb-r" style="width:26%"></div>
+    </div>
+    <div class="plabels">
+      <span class="l">ביקורתי 40%</span>
+      <span class="c">מרכז 34%</span>
+      <span class="r">תומך 26%</span>
+    </div>
+    <div class="pinst-row">
+      <span class="pinst"><span>RUSI</span> — ביקורתי</span>
+      <span class="pinst"><span>CSIS</span> — מרכז</span>
+      <span class="pinst"><span>INSS</span> — תומך</span>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-label">מקורות המחקר</div>
+
+  <a class="source-card" href="https://www.inss.org.il/publication/between-dahiya-and-tehran/" target="_blank" rel="noopener">
+    <div class="source-top">
+      <span class="source-inst-badge">INSS</span>
+      <span class="source-author">Eldad Shavit, Orna Mizrahi</span>
+    </div>
+    <div class="source-title">The test of the Lebanese arena from the perspectives of the United States, Iran, Lebanon, Hezbollah, and Israel</div>
+    <div class="source-bottom">
+      <span class="source-date">יוני 2026</span>
+      <span class="source-link">קרא את המקור ←</span>
+    </div>
+  </a>
+
+  <a class="source-card" href="https://www.csis.org/analysis/lebanon-shadow-us-iran-mou-risks-and-opportunities" target="_blank" rel="noopener">
+    <div class="source-top">
+      <span class="source-inst-badge">CSIS</span>
+      <span class="source-author">Paul Salem</span>
+    </div>
+    <div class="source-title">Lebanon in the Shadow of the U.S.-Iran MOU: Risks and Opportunities</div>
+    <div class="source-bottom">
+      <span class="source-date">יוני 2026</span>
+      <span class="source-link">קרא את המקור ←</span>
+    </div>
+  </a>
+
+  <a class="source-card" href="https://www.rusi.org/explore-our-research/publications/commentary/hollowing-out-lebanon-how-pressure-hezbollah-could-save-it" target="_blank" rel="noopener">
+    <div class="source-top">
+      <span class="source-inst-badge">RUSI</span>
+      <span class="source-author">Alexander King</span>
+    </div>
+    <div class="source-title">Hollowing Out Lebanon: How Pressure on Hezbollah Could Save It</div>
+    <div class="source-bottom">
+      <span class="source-date">יוני 2026</span>
+      <span class="source-link">קרא את המקור ←</span>
+    </div>
+  </a>
+
+  <div class="divider"></div>
+
+  <!-- RELATED -->
+  <div class="sources-label" style="margin-bottom:14px;">ניתוחים נוספים</div>
+  <a class="related-card" href="#">
+    <div class="related-type">🧠 תמונת מצב · בקרוב</div>
+    <div class="related-title">ישראל ואיראן: מה הושג מהמו"מ בלוצרן?</div>
+  </a>
+
+</div>
+</body>
+</html>
