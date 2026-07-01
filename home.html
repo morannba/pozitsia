@@ -10,7 +10,7 @@
   gtag('js', new Date());
   gtag('config', 'G-E6NLBK0TDS');
 </script>
-  <meta name="description" content="פוזיציה מציגה כל סיפור חדשותי מכל הזוויות — כדי שתוכלו להבין מהר מה באמת קרה.">
+<meta name="description" content="פוזיציה מציגה כל סיפור חדשותי מכל הזוויות — כדי שתוכלו להבין מהר מה באמת קרה.">
 <meta property="og:title" content="פוזיציה — הבינו את החדשות">
 <meta property="og:description" content="כל סיפור נאסף ממספר מקורות, מסוכם בצורה ברורה ומציג נקודות מבט שונות.">
 <meta property="og:image" content="https://pozitsia.co.il/lebanon-and-israel.png">
@@ -19,22 +19,39 @@
 <meta property="og:site_name" content="פוזיציה">
 <meta property="og:locale" content="he_IL">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="pIEf1K1nnqndoiyKj3vohvDfVRVzPhFq1ePTbCAIs8Y" />
 <title>פוזיציה — הבן את החדשות מהר יותר</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Heebo', sans-serif; direction: rtl; background: #f7f7f5; color: #1a1a1a; }
-nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+
+/* ── NAV ── */
+nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 24px; display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
 .nav-logo { font-size: 22px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
 .nav-logo span { color: #185FA5; }
+
+/* ── DATE BAR ── */
 .date-bar { padding: 12px 24px; font-size: 12px; color: #999; border-bottom: 1px solid #eee; background: #fff; text-align: center; }
-.hero-message { text-align: center; padding: 28px 24px 8px; max-width: 680px; margin: 0 auto; }
+
+/* ── HERO ── */
+.hero-message { text-align: center; padding: 28px 24px 20px; max-width: 780px; margin: 0 auto; }
 .hero-h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.3; }
 .hero-sub { font-size: 14px; color: #777; line-height: 1.6; }
-.feed { max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
+
+/* ── PAGE LAYOUT ── */
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 20px 20px 60px; display: grid; grid-template-columns: 1fr 300px; gap: 28px; align-items: start; }
+
+/* ── FEED COLUMN ── */
+.feed-col { min-width: 0; }
+.feed-col-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.feed-col-label-text { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8A8878; white-space: nowrap; }
+.feed-col-label-line { flex: 1; height: 1px; background: #E4E2D8; }
+
+/* ── NEWS CARDS ── */
 .story-card { background: #fff; border-radius: 12px; border: 1px solid #e8e8e8; margin-bottom: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.15s, border-color 0.15s; }
 .story-card:hover { border-color: #ccc; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.card-image { width: 100%; height: 180px; object-fit: cover; display: block; background: #ddd; }
+.card-image { width: 100%; height: 170px; object-fit: cover; display: block; background: #ddd; }
 .card-body { padding: 14px 16px 12px; }
 .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
 .card-tag { font-size: 11px; font-weight: 700; color: #185FA5; letter-spacing: 0.4px; text-transform: uppercase; }
@@ -56,9 +73,38 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
 .source-pills { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
 .source-pill { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; }
 .source-count { font-size: 11px; color: #aaa; }
-@media(max-width:600px) { .card-image { height: 150px; } .card-title { font-size: 16px; } }
+
+/* ── SIDEBAR ── */
+.sidebar-col { position: sticky; top: 72px; }
+.sitrep-label { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.sitrep-label-text { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8A8878; white-space: nowrap; }
+.sitrep-label-line { flex: 1; height: 1px; background: #E4E2D8; }
+.sitrep-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; position: relative; transition: box-shadow 0.2s, border-color 0.2s; }
+.sitrep-card:hover { border-color: #185FA5; box-shadow: 0 4px 20px rgba(24,95,165,0.1); }
+.sitrep-card::before { content: ""; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: linear-gradient(180deg,#185FA5 0%,#0D3F7A 100%); border-radius: 0 14px 14px 0; }
+.sitrep-inner { padding: 18px 20px 18px 16px; }
+.sitrep-type { font-size: 10px; font-weight: 700; color: #185FA5; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+.sitrep-title { font-family: 'Frank Ruhl Libre', Georgia, serif; font-size: 17px; font-weight: 700; line-height: 1.45; color: #1a1a1a; margin-bottom: 10px; }
+.sitrep-summary { font-size: 12px; color: #5A5850; line-height: 1.65; margin-bottom: 14px; }
+.sitrep-sources { margin-bottom: 16px; }
+.sitrep-sources-label { font-size: 10px; color: #8A8878; display: block; margin-bottom: 6px; }
+.sitrep-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.sitrep-pill { font-size: 10px; font-weight: 600; color: #185FA5; background: #EEF4FC; padding: 3px 8px; border-radius: 20px; border: 1px solid #C8DDEF; }
+.sitrep-divider { height: 1px; background: #EEEDE5; margin-bottom: 14px; }
+.sitrep-footer { display: flex; align-items: center; justify-content: space-between; }
+.sitrep-cta { font-size: 12px; font-weight: 600; color: #185FA5; display: flex; align-items: center; gap: 4px; }
+.sitrep-cta::after { content: "←"; font-size: 13px; }
+.sitrep-updated { font-size: 10px; color: #B4B2A9; }
+
+/* ── MOBILE ── */
+@media (max-width: 899px) {
+  .page-layout { grid-template-columns: 1fr; padding: 16px 16px 60px; gap: 0; }
+  .sidebar-col { position: static; order: -1; margin-bottom: 24px; }
+  .feed-col { order: 1; }
+  .card-image { height: 150px; }
+  .card-title { font-size: 16px; }
+}
 </style>
-  <meta name="google-site-verification" content="pIEf1K1nnqndoiyKj3vohvDfVRVzPhFq1ePTbCAIs8Y" />
 </head>
 <body>
 
@@ -66,14 +112,53 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
   <a class="nav-logo" href="home.html">פוזי<span>ציה</span></a>
 </nav>
 
-<div class="date-bar">שני, 29 ביוני 2026</div>
+<div class="date-bar">יום רביעי, 1 ביולי 2026</div>
 
 <div class="hero-message">
   <h1 class="hero-h1">הבינו את החדשות. לא רק תקראו אותן.</h1>
   <p class="hero-sub">כל סיפור נאסף ממספר מקורות, מסוכם בצורה ברורה ומציג נקודות מבט שונות – כדי שתוכלו להבין מהר מה באמת קרה.</p>
 </div>
 
-<div class="feed" id="feed"></div>
+<div class="page-layout">
+
+  <!-- ═══ FEED ═══ -->
+  <div class="feed-col">
+    <div class="feed-col-label">
+      <span class="feed-col-label-text">חדשות היום</span>
+      <div class="feed-col-label-line"></div>
+    </div>
+    <div id="feed"></div>
+  </div>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar-col">
+    <div class="sitrep-label">
+      <span class="sitrep-label-text">🧠 תמונת מצב</span>
+      <div class="sitrep-label-line"></div>
+    </div>
+    <a class="sitrep-card" href="sitrep-hezbollah.html">
+      <div class="sitrep-inner">
+        <span class="sitrep-type">ניתוח גיאופוליטי · שבועי</span>
+        <div class="sitrep-title">ישראל וחיזבאללה: האם הלחץ הצבאי באמת עובד?</div>
+        <div class="sitrep-summary">שלושה מכונים מובילים בחנו את יעילות האסטרטגיה הישראלית. המסקנות חלוקות: INSS מציג עדויות לנסיגה אסטרטגית, RUSI מזהיר מפני חוסן מוסדי, ו-RAND מציב שאלות לגבי היום שאחרי.</div>
+        <div class="sitrep-sources">
+          <span class="sitrep-sources-label">מבוסס על מחקרים מ:</span>
+          <div class="sitrep-pills">
+            <span class="sitrep-pill">INSS</span>
+            <span class="sitrep-pill">RUSI</span>
+            <span class="sitrep-pill">CSIS</span>
+          </div>
+        </div>
+        <div class="sitrep-divider"></div>
+        <div class="sitrep-footer">
+          <span class="sitrep-cta">קרא את הניתוח</span>
+          <span class="sitrep-updated">יולי 2026</span>
+        </div>
+      </div>
+    </a>
+  </aside>
+
+</div>
 
 <script>
 fetch('stories.json')
