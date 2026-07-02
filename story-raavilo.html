@@ -93,6 +93,12 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
 .bias-pcts .c { color: #999; }
 .bias-pcts .r { color: #185FA5; font-weight: 600; }
 .bias-inner { flex: 1; }
+.consensus-block { background: #fff; border: 1px solid #e8e8e8; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+.consensus-item { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; }
+.dispute-item { padding: 12px 16px; }
+.consensus-label { font-size: 11px; font-weight: 700; color: #2A7A2A; letter-spacing: 0.6px; margin-bottom: 5px; }
+.dispute-label { font-size: 11px; font-weight: 700; color: #C94B7B; letter-spacing: 0.6px; margin-bottom: 5px; }
+.consensus-text, .dispute-text { font-size: 13px; color: #3a3a38; line-height: 1.6; }
 .sources-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 8px; }
 .source-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; margin-bottom: 8px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; transition: border-color 0.15s; }
 .source-card:hover { border-color: #bbb; }
@@ -168,14 +174,25 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
       <div class="bias-inner">
         <div class="bias-bar-wrap">
           <div class="bar-l" style="width:50%;"></div>
-          <div class="bar-c" style="width:25%;"></div>
-          <div class="bar-r" style="width:25%;"></div>
+          <div class="bar-c" style="width:0%;"></div>
+          <div class="bar-r" style="width:50%;"></div>
         </div>
         <div class="bias-pcts">
           <span class="l">שמאל 50%</span>
-          <span class="c">מרכז 25%</span>
-          <span class="r">ימין 25%</span>
+          <span class="c"></span>
+          <span class="r">ימין 50%</span>
         </div>
+      </div>
+    </div>
+
+    <div class="consensus-block">
+      <div class="consensus-item">
+        <div class="consensus-label">✓ משותף לכל המקורות</div>
+        <div class="consensus-text">בג"ץ קיבל החלטה נדירה בצו ביניים נגד מינוי פרלמנטרי — וכולם מסכימים שפסק הדין הסופי יהיה תקדימי לגבי גבולות הסמכות השיפוטית.</div>
+      </div>
+      <div class="dispute-item">
+        <div class="dispute-label">✕ נקודת המחלוקת</div>
+        <div class="dispute-text">האם מדובר בפגם טכני בהצבעה שמצדיק התערבות שיפוטית, או בהתערבות פוליטית של בג"ץ בהחלטה ריבונית של הכנסת.</div>
       </div>
     </div>
 
@@ -186,11 +203,11 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
       <div class="source-main">
         <div class="source-top">
           <span class="source-name">ynet</span>
-          <span class="lean-dot" style="background:#C94B7B;" title="נוטה לשמאל"></span>
+          <span class="lean-dot" style="background:#C94B7B;"></span>
           <span class="source-writer">מערכת ynet</span>
         </div>
         <div class="source-headline">בג"ץ הקפיא את כניסת ראבילו לתפקיד מבקר המדינה</div>
-        <div class="source-angle">דיווח עובדתי מהיר. מצטט את נוסח הצו המלא ומדגיש את העובדה שחמשת השופטים כללו את שני הבכירים — עמית וסולברג — מה שמרמז על גיבוש דעה רחבה בבג"ץ.</div>
+        <div class="source-angle">דיווח עובדתי מהיר. מצטט את נוסח הצו המלא ומדגיש את העובדה שחמשת השופטים כללו את שני הבכירים — עמית וסולברג.</div>
         <a class="source-link" href="https://www.ynet.co.il/news/article/rynxtizmge" target="_blank" rel="noopener">קרא את הכתבה ←</a>
       </div>
     </div>
@@ -200,7 +217,7 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
       <div class="source-main">
         <div class="source-top">
           <span class="source-name">הארץ</span>
-          <span class="lean-dot" style="background:#C94B7B;" title="נוטה לשמאל"></span>
+          <span class="lean-dot" style="background:#C94B7B;"></span>
           <span class="source-writer">מערכת הארץ</span>
         </div>
         <div class="source-headline">בג"ץ מקפיא את מינוי ראבילו למבקר המדינה</div>
@@ -214,11 +231,11 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
       <div class="source-main">
         <div class="source-top">
           <span class="source-name">מקור ראשון</span>
-          <span class="lean-dot" style="background:#185FA5;" title="נוטה לימין"></span>
+          <span class="lean-dot" style="background:#185FA5;"></span>
           <span class="source-writer">איילת כהנא</span>
         </div>
         <div class="source-headline">בג"ץ מקפיא את מינוי עו"ד מיכאל ראבילו למבקר המדינה</div>
-        <div class="source-angle">מפרט את הליך הבחירה ואת הטענות המשפטיות של שני הצדדים. מציין שבג"ץ אותת שהקושי המרכזי הוא הליך ההצבעה — לא ניגוד העניינים — מה שמצמצם את היקף הסוגיה.</div>
+        <div class="source-angle">מפרט את הליך הבחירה ואת הטענות המשפטיות של שני הצדדים. מציין שבג"ץ אותת שהקושי המרכזי הוא הליך ההצבעה — לא ניגוד העניינים.</div>
         <a class="source-link" href="https://www.makorrishon.co.il/news/law/article/346991" target="_blank" rel="noopener">קרא את הכתבה ←</a>
       </div>
     </div>
@@ -228,11 +245,11 @@ nav { background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 24px; displ
       <div class="source-main">
         <div class="source-top">
           <span class="source-name">ערוץ 14</span>
-          <span class="lean-dot" style="background:#185FA5;" title="נוטה לימין"></span>
+          <span class="lean-dot" style="background:#185FA5;"></span>
           <span class="source-writer">יצחק אבוחצירא</span>
         </div>
         <div class="source-headline">דרמה בבג"ץ: הוקפאה כניסתו של ראבילו לתפקיד מבקר המדינה</div>
-        <div class="source-angle">ממסגר את ההחלטה כהתערבות שיפוטית בהחלטה פרלמנטרית. מציין שצו הביניים הוצא "לאחר שלפני כעשרה ימים כבר הוציאו צו על תנאי" — מדגיש את האגרסיביות של הצעדים השיפוטיים.</div>
+        <div class="source-angle">ממסגר את ההחלטה כהתערבות שיפוטית בהחלטה פרלמנטרית. מדגיש את האגרסיביות של הצעדים השיפוטיים לאחר שהכנסת דחתה את הצעת הפשרה.</div>
         <a class="source-link" href="https://www.c14.co.il/article/1605150" target="_blank" rel="noopener">קרא את הכתבה ←</a>
       </div>
     </div>
