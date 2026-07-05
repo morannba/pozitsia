@@ -3,195 +3,294 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World News API — בדיקת היתכנות | פוזיציה</title>
+<title>World News API v2 — כיסוי ואיכות | פוזיציה</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f7f5; color: #1a1a1a; direction: rtl; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f7f5; color: #1a1a1a; direction: rtl; font-size: 14px; }
 
-.header { background: #0D3F7A; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
-.header h1 { font-size: 18px; }
-.header .badge { background: rgba(255,255,255,0.2); font-size: 11px; padding: 4px 10px; border-radius: 20px; }
+.header { background: #0D3F7A; color: #fff; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+.header h1 { font-size: 16px; }
+.badge { background: rgba(255,255,255,0.2); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
 
-.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-.notice { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #E65100; }
+.notice { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; font-size: 12px; color: #E65100; }
 
-.search-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; }
-.search-card h2 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #0D3F7A; }
+/* TABS */
+.tabs-nav { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 2px solid #E4E2D8; }
+.tab-nav-btn { padding: 10px 20px; border: none; background: none; font-size: 13px; font-weight: 600; color: #888; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; font-family: inherit; }
+.tab-nav-btn.active { color: #0D3F7A; border-bottom-color: #0D3F7A; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
 
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
-.form-group { display: flex; flex-direction: column; gap: 5px; }
-.form-group.full { grid-column: 1 / -1; }
-label { font-size: 12px; font-weight: 600; color: #555; }
-input, select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 7px; font-size: 14px; font-family: inherit; direction: rtl; }
-input:focus, select:focus { outline: none; border-color: #185FA5; }
-
-.btn { background: #185FA5; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+/* FORMS */
+.card { background: #fff; border: 1px solid #E4E2D8; border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; }
+.card h2 { font-size: 14px; font-weight: 700; color: #0D3F7A; margin-bottom: 14px; }
+.key-row { display: flex; gap: 8px; align-items: center; background: #f0f4fb; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; }
+.key-row label { font-size: 11px; font-weight: 700; color: #185FA5; white-space: nowrap; }
+.key-row input { flex: 1; font-family: monospace; font-size: 12px; direction: ltr; padding: 4px 8px; border: 1px solid #ddd; border-radius: 5px; }
+.form-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: flex-end; }
+.form-group { display: flex; flex-direction: column; gap: 4px; }
+.form-group.grow { flex: 1; min-width: 200px; }
+label { font-size: 11px; font-weight: 600; color: #555; }
+input[type=text], select, textarea { padding: 7px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; font-family: inherit; direction: rtl; }
+textarea { direction: rtl; resize: vertical; }
+.btn { background: #185FA5; color: #fff; border: none; padding: 8px 20px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; white-space: nowrap; }
 .btn:hover { background: #0D3F7A; }
 .btn:disabled { background: #ccc; cursor: not-allowed; }
-.btn-secondary { background: #f0f0ee; color: #555; border: 1px solid #ddd; margin-right: 8px; }
-.btn-secondary:hover { background: #e8e8e5; }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn-outline { background: #fff; color: #185FA5; border: 1px solid #185FA5; }
+.btn-outline:hover { background: #EEF4FC; }
+.btn-orange { background: #E65100; }
+.btn-orange:hover { background: #BF360C; }
 
-.stats-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-.stat-box { background: #fff; border: 1px solid #E4E2D8; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; }
-.stat-box .val { font-size: 24px; font-weight: 700; color: #0D3F7A; }
-.stat-box .lbl { font-size: 11px; color: #888; margin-top: 2px; }
+/* STATS */
+.stats-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.stat-box { background: #fff; border: 1px solid #E4E2D8; border-radius: 8px; padding: 10px 14px; flex: 1; min-width: 120px; }
+.stat-box .val { font-size: 22px; font-weight: 700; color: #0D3F7A; }
+.stat-box .lbl { font-size: 11px; color: #888; }
 
-.results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.results-header h2 { font-size: 15px; font-weight: 700; color: #1a1a1a; }
-.view-toggle { display: flex; gap: 4px; }
-.view-btn { padding: 5px 12px; border: 1px solid #ddd; background: #fff; border-radius: 6px; font-size: 12px; cursor: pointer; }
-.view-btn.active { background: #185FA5; color: #fff; border-color: #185FA5; }
+/* VERDICT */
+.verdict { border-radius: 10px; padding: 14px 18px; margin-bottom: 16px; }
+.verdict.good { background: #E8F5E9; border: 1px solid #A5D6A7; }
+.verdict.warn { background: #FFF8E1; border: 1px solid #FFE082; }
+.verdict.bad { background: #FFEBEE; border: 1px solid #EF9A9A; }
+.verdict h3 { font-size: 13px; font-weight: 700; margin-bottom: 8px; }
+.verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.vitem { background: #fff; border-radius: 7px; padding: 8px 10px; text-align: center; }
+.vitem .vv { font-size: 18px; font-weight: 700; }
+.vitem .vl { font-size: 10px; color: #888; margin-top: 1px; }
+.green { color: #2E7D32; } .orange { color: #E65100; } .red { color: #C62828; }
 
-.article-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
-.article-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.article-title { font-size: 15px; font-weight: 700; line-height: 1.4; flex: 1; }
+/* ARTICLE CARD */
+.article-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; }
+.article-num { font-size: 11px; color: #aaa; float: left; }
+.article-title { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; }
 .article-title a { color: #1a1a1a; text-decoration: none; }
 .article-title a:hover { color: #185FA5; }
-
-.article-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
-.meta-pill { font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+.meta-pills { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; align-items: center; }
+.pill { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
 .pill-source { background: #EEF4FC; color: #185FA5; border: 1px solid #C8DDEF; }
 .pill-lang { background: #F3E5F5; color: #7B1FA2; }
 .pill-date { background: #F1F8E9; color: #388E3C; }
-.pill-score { background: #FFF3E0; color: #E65100; }
+.pill-domain { background: #FFF3E0; color: #E65100; }
+.url-row { font-size: 11px; color: #aaa; margin-bottom: 10px; word-break: break-all; }
+.url-row a { color: #185FA5; }
 
-.content-section { margin-top: 10px; }
-.content-label { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
-.content-box { background: #f7f7f5; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.6; color: #333; border: 1px solid #eee; }
-.content-box.empty { color: #aaa; font-style: italic; }
-.content-length { font-size: 11px; color: #888; margin-top: 4px; }
+.text-section { margin-top: 10px; }
+.text-label { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.text-counts { font-size: 11px; color: #555; background: #f0f4fb; padding: 2px 8px; border-radius: 20px; }
+.text-box { background: #f7f7f5; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.65; color: #333; border: 1px solid #eee; white-space: pre-wrap; word-break: break-word; }
+.text-box.collapsed { max-height: 120px; overflow: hidden; position: relative; }
+.text-box.collapsed::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(transparent, #f7f7f5); }
+.text-box.empty { color: #aaa; font-style: italic; }
+.text-bar { height: 5px; border-radius: 3px; background: #eee; margin: 5px 0; overflow: hidden; }
+.text-bar-fill { height: 100%; border-radius: 3px; }
 
-.content-bar { height: 6px; border-radius: 3px; background: #eee; margin-top: 6px; overflow: hidden; }
-.content-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #E65100, #185FA5); transition: width 0.3s; }
+.expand-btn { font-size: 11px; color: #185FA5; background: none; border: none; cursor: pointer; padding: 2px 0; font-family: inherit; font-weight: 600; }
 
-.raw-section { margin-top: 20px; }
-.raw-toggle { font-size: 12px; color: #185FA5; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }
-.raw-box { background: #1a1a2a; color: #a8d8a8; border-radius: 8px; padding: 16px; font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.5; overflow-x: auto; margin-top: 8px; max-height: 400px; overflow-y: auto; display: none; direction: ltr; text-align: left; }
+/* COVERAGE MATRIX */
+.matrix-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.matrix-table th { background: #0D3F7A; color: #fff; padding: 8px 10px; text-align: right; font-weight: 600; white-space: nowrap; }
+.matrix-table td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; vertical-align: top; }
+.matrix-table tr:hover td { background: #f9f9f9; }
+.matrix-table tr.has-content td { background: #f0faf0; }
+.coverage-yes { color: #2E7D32; font-weight: 700; }
+.coverage-partial { color: #E65100; font-weight: 700; }
+.coverage-no { color: #C62828; font-weight: 700; }
+.coverage-unknown { color: #aaa; }
+.pub-status { display: inline-flex; align-items: center; gap: 4px; }
+
+/* LOADING */
+.loading { text-align: center; padding: 30px; color: #888; }
+.loading .spin { display: inline-block; animation: spin 1s linear infinite; font-size: 24px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* RAW */
+.raw-toggle { font-size: 12px; color: #185FA5; background: none; border: none; cursor: pointer; padding: 4px 0; font-family: inherit; margin-top: 8px; }
+.raw-box { background: #1a1a2a; color: #a8d8a8; border-radius: 8px; padding: 14px; font-family: monospace; font-size: 11px; line-height: 1.5; overflow: auto; max-height: 350px; direction: ltr; text-align: left; display: none; margin-top: 6px; }
 .raw-box.visible { display: block; }
 
-.loading { text-align: center; padding: 40px; color: #888; font-size: 14px; }
-.loading .spinner { font-size: 32px; animation: spin 1s linear infinite; display: inline-block; }
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+/* CONCLUSION */
+.conclusion-card { background: #fff; border: 2px solid #0D3F7A; border-radius: 12px; padding: 18px 20px; margin-top: 16px; }
+.conclusion-card h3 { font-size: 15px; font-weight: 700; color: #0D3F7A; margin-bottom: 14px; }
+.conclusion-item { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; }
+.conclusion-item:last-child { border-bottom: none; }
+.conclusion-num { font-weight: 700; color: #0D3F7A; min-width: 20px; }
 
-.error-box { background: #FFEBEE; border: 1px solid #EF9A9A; border-radius: 8px; padding: 14px 16px; color: #C62828; font-size: 13px; }
+.progress-bar-outer { background: #eee; border-radius: 4px; height: 8px; flex: 1; overflow: hidden; }
+.progress-bar-inner { height: 100%; border-radius: 4px; }
 
-.empty-state { text-align: center; padding: 40px; color: #888; }
-
-.verdict-card { background: #E8F5E9; border: 1px solid #A5D6A7; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
-.verdict-card h3 { font-size: 14px; font-weight: 700; color: #2E7D32; margin-bottom: 8px; }
-.verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-.verdict-item { background: #fff; border-radius: 7px; padding: 10px 12px; text-align: center; }
-.verdict-item .vval { font-size: 20px; font-weight: 700; }
-.verdict-item .vlbl { font-size: 11px; color: #888; }
-.green { color: #2E7D32; }
-.orange { color: #E65100; }
-.red { color: #C62828; }
-
-.key-input-row { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; background: #f0f4fb; border-radius: 8px; padding: 10px 14px; }
-.key-input-row label { font-size: 12px; font-weight: 600; color: #185FA5; white-space: nowrap; }
-.key-input-row input { flex: 1; font-family: monospace; font-size: 12px; direction: ltr; }
+.err { background: #FFEBEE; border: 1px solid #EF9A9A; border-radius: 8px; padding: 12px 14px; color: #C62828; font-size: 13px; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>🧪 World News API — בדיקת היתכנות לפוזיציה</h1>
-  <span class="badge">טסט בלבד · לא מחובר לאתר</span>
+  <h1>🧪 World News API v2 — כיסוי מקורות ואיכות טקסט | פוזיציה</h1>
+  <span class="badge">טסט בלבד</span>
 </div>
 
 <div class="container">
+  <div class="notice">⚠️ כלי פיתוח בלבד — אל תשתף את ה-API key. אל תשלח דף זה למשתמשים.</div>
 
-  <div class="notice">
-    ⚠️ דף זה הוא כלי פיתוח בלבד. אין לשתף את ה-API key. אין לשלוח דף זה למשתמשים.
-  </div>
-
-  <div class="search-card">
-    <h2>הגדרות חיפוש</h2>
-
-    <div class="key-input-row">
+  <!-- API KEY (shared across tabs) -->
+  <div class="card" style="margin-bottom:12px;">
+    <div class="key-row">
       <label>🔑 API Key:</label>
-      <input type="password" id="apiKey" placeholder="הדבק את ה-API key כאן" value="">
-      <button class="btn btn-secondary" onclick="toggleKeyVisibility()">הצג</button>
-    </div>
-
-    <div class="form-grid">
-      <div class="form-group full">
-        <label>נושא / שאילתת חיפוש</label>
-        <input type="text" id="query" placeholder="לדוגמה: נתניהו, חיזבאללה, בג&quot;ץ, רצח עם..." value="ישראל">
-      </div>
-      <div class="form-group">
-        <label>שפה</label>
-        <select id="language">
-          <option value="he">עברית (he)</option>
-          <option value="">כל השפות</option>
-          <option value="en">אנגלית (en)</option>
-          <option value="ar">ערבית (ar)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>מספר תוצאות</label>
-        <select id="number">
-          <option value="10">10 כתבות</option>
-          <option value="20" selected>20 כתבות</option>
-          <option value="50">50 כתבות</option>
-          <option value="100">100 כתבות (מקסימום)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>טווח זמן (שעות אחורה)</label>
-        <select id="hours">
-          <option value="24">24 שעות</option>
-          <option value="48" selected>48 שעות</option>
-          <option value="72">72 שעות</option>
-          <option value="168">שבוע</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>מיין לפי</label>
-        <select id="sort">
-          <option value="publish-time">תאריך פרסום</option>
-          <option value="relevance">רלוונטיות</option>
-        </select>
-      </div>
-    </div>
-
-    <div>
-      <button class="btn" onclick="runSearch()" id="searchBtn">🔍 הרץ חיפוש</button>
-      <button class="btn btn-secondary" onclick="clearResults()">נקה תוצאות</button>
+      <input type="password" id="apiKey" placeholder="הדבק API key">
+      <button class="btn btn-outline btn-sm" onclick="toggleKey()">הצג</button>
     </div>
   </div>
 
-  <div id="verdictSection" style="display:none;"></div>
-  <div id="statsSection" style="display:none;"></div>
-  <div id="resultsSection"></div>
-  <div id="rawSection" style="display:none;">
-    <div class="raw-section">
-      <button class="raw-toggle" onclick="toggleRaw()">▼ הצג/הסתר תגובת API גולמית (Raw Response)</button>
-      <pre class="raw-box" id="rawBox"></pre>
+  <div class="tabs-nav">
+    <button class="tab-nav-btn active" onclick="switchTab('tab-search')">🔍 חיפוש חופשי</button>
+    <button class="tab-nav-btn" onclick="switchTab('tab-coverage')">📊 מטריצת כיסוי</button>
+    <button class="tab-nav-btn" onclick="switchTab('tab-text')">📄 בדיקת טקסט מלא</button>
+  </div>
+
+  <!-- ═══ TAB 1: FREE SEARCH ═══ -->
+  <div class="tab-panel active" id="tab-search">
+    <div class="card">
+      <h2>חיפוש חופשי</h2>
+      <div class="form-row">
+        <div class="form-group grow">
+          <label>שאילתה</label>
+          <input type="text" id="s-query" value="ישראל" placeholder="נושא, שם, אירוע...">
+        </div>
+        <div class="form-group">
+          <label>שפה</label>
+          <select id="s-lang">
+            <option value="he">עברית</option>
+            <option value="">הכל</option>
+            <option value="en">אנגלית</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>כמות</label>
+          <select id="s-num">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>שעות אחורה</label>
+          <select id="s-hours">
+            <option value="24">24</option>
+            <option value="48" selected>48</option>
+            <option value="72">72</option>
+            <option value="168">שבוע</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn" onclick="runFreeSearch()" id="s-btn">🔍 חפש</button>
+        </div>
+      </div>
     </div>
+    <div id="s-results"></div>
+  </div>
+
+  <!-- ═══ TAB 2: COVERAGE MATRIX ═══ -->
+  <div class="tab-panel" id="tab-coverage">
+    <div class="card">
+      <h2>📊 בדיקת כיסוי מקורות ישראליים</h2>
+      <p style="font-size:13px;color:#555;margin-bottom:12px;">
+        הדף יריץ מספר שאילתות אוטומטיות על נושאים ישראליים שוטפים ויבנה מטריצת כיסוי לפי מקור.
+        כל שאילתה = API call אחד. סה"כ: כ-8 calls.
+      </p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>שעות אחורה לכל שאילתה</label>
+          <select id="c-hours">
+            <option value="24">24</option>
+            <option value="48" selected>48</option>
+            <option value="72">72</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>כמות לכל שאילתה</label>
+          <select id="c-num">
+            <option value="20">20</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <div class="form-group" style="align-self:flex-end;">
+          <button class="btn btn-orange" onclick="runCoverageTest()" id="c-btn">🚀 הרץ בדיקת כיסוי</button>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#888;margin-top:4px;">
+        שאילתות שיורצו: ישראל, נתניהו, בגץ, צבא ישראל, כלכלה ישראל, פוליטיקה ישראל, חדשות ישראל, ביטחון
+      </div>
+    </div>
+    <div id="c-progress" style="display:none;" class="card">
+      <div id="c-progress-text" style="font-size:13px;color:#555;margin-bottom:8px;"></div>
+      <div style="background:#eee;border-radius:4px;height:8px;overflow:hidden;">
+        <div id="c-progress-bar" style="height:100%;background:#185FA5;border-radius:4px;transition:width 0.3s;width:0%;"></div>
+      </div>
+    </div>
+    <div id="c-results"></div>
+  </div>
+
+  <!-- ═══ TAB 3: FULL TEXT TEST ═══ -->
+  <div class="tab-panel" id="tab-text">
+    <div class="card">
+      <h2>📄 בדיקת טקסט מלא — Article.Text</h2>
+      <p style="font-size:13px;color:#555;margin-bottom:12px;">
+        חפש כתבות וראה את ה-ARTICLE.TEXT המלא ללא קיצוצים — כדי לבדוק אם זה גוף הכתבה המלא או רק חלקי.
+      </p>
+      <div class="form-row">
+        <div class="form-group grow">
+          <label>שאילתה</label>
+          <input type="text" id="t-query" value="ישראל" placeholder="נושא לחיפוש...">
+        </div>
+        <div class="form-group">
+          <label>שפה</label>
+          <select id="t-lang">
+            <option value="he">עברית</option>
+            <option value="">הכל</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>כמות</label>
+          <select id="t-num">
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>שעות</label>
+          <select id="t-hours">
+            <option value="48" selected>48</option>
+            <option value="72">72</option>
+            <option value="168">שבוע</option>
+          </select>
+        </div>
+        <div class="form-group" style="align-self:flex-end;">
+          <button class="btn" onclick="runTextTest()" id="t-btn">🔍 חפש</button>
+        </div>
+      </div>
+    </div>
+    <div id="t-results"></div>
   </div>
 
 </div>
 
 <script>
-let lastResponse = null;
-
-function toggleKeyVisibility() {
-  const input = document.getElementById('apiKey');
-  input.type = input.type === 'password' ? 'text' : 'password';
+// ── SHARED ──────────────────────────────────────────
+function toggleKey() {
+  const i = document.getElementById('apiKey');
+  i.type = i.type === 'password' ? 'text' : 'password';
 }
 
-function toggleRaw() {
-  document.getElementById('rawBox').classList.toggle('visible');
-}
-
-function clearResults() {
-  document.getElementById('resultsSection').innerHTML = '';
-  document.getElementById('statsSection').style.display = 'none';
-  document.getElementById('rawSection').style.display = 'none';
-  document.getElementById('verdictSection').style.display = 'none';
-  lastResponse = null;
+function getKey() {
+  const k = document.getElementById('apiKey').value.trim();
+  if (!k) { alert('נא להזין API key'); return null; }
+  return k;
 }
 
 function getHoursAgo(hours) {
@@ -200,199 +299,506 @@ function getHoursAgo(hours) {
   return d.toISOString().replace('T', ' ').substring(0, 19);
 }
 
-async function runSearch() {
-  const apiKey = document.getElementById('apiKey').value.trim();
-  const query = document.getElementById('query').value.trim();
-  const language = document.getElementById('language').value;
-  const number = document.getElementById('number').value;
-  const hours = document.getElementById('hours').value;
-  const sort = document.getElementById('sort').value;
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
 
-  if (!apiKey) {
-    alert('נא להזין API key');
-    return;
-  }
-  if (!query) {
-    alert('נא להזין שאילתת חיפוש');
-    return;
-  }
-
-  const btn = document.getElementById('searchBtn');
-  btn.disabled = true;
-  btn.textContent = '⏳ מחפש...';
-
-  document.getElementById('resultsSection').innerHTML = '<div class="loading"><div class="spinner">⏳</div><p style="margin-top:12px;">שולח בקשה ל-World News API...</p></div>';
-  document.getElementById('statsSection').style.display = 'none';
-  document.getElementById('rawSection').style.display = 'none';
-  document.getElementById('verdictSection').style.display = 'none';
-
-  const earliestDate = getHoursAgo(hours);
+async function fetchNews(apiKey, query, language, number, hours) {
   const params = new URLSearchParams({
     'api-key': apiKey,
     'text': query,
     'number': number,
-    'sort': sort,
+    'sort': 'publish-time',
     'sort-direction': 'DESC',
-    'earliest-publish-date': earliestDate,
+    'earliest-publish-date': getHoursAgo(hours),
   });
   if (language) params.append('language', language);
-
   const url = `https://api.worldnewsapi.com/search-news?${params.toString()}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || res.status);
+  return data;
+}
 
+function getDomain(url) {
   try {
-    const response = await fetch(url);
-    const data = await response.json();
-    lastResponse = data;
+    return new URL(url).hostname.replace('www.', '');
+  } catch(e) { return url || 'לא ידוע'; }
+}
 
-    btn.disabled = false;
-    btn.textContent = '🔍 הרץ חיפוש';
+function wordCount(text) {
+  if (!text) return 0;
+  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+}
 
-    if (!response.ok) {
-      document.getElementById('resultsSection').innerHTML = `<div class="error-box">❌ שגיאת API: ${data.message || response.status}<br><small>${JSON.stringify(data)}</small></div>`;
-      return;
+function colorForLength(len) {
+  if (len > 2000) return '#2E7D32';
+  if (len > 500) return '#E65100';
+  return '#C62828';
+}
+
+function renderArticleCard(article, index, showFullText = false) {
+  const domain = getDomain(article.url);
+  const pubDate = article.publish_date ? new Date(article.publish_date).toLocaleString('he-IL') : '—';
+  const textLen = article.text ? article.text.length : 0;
+  const textWords = wordCount(article.text);
+  const summaryLen = article.summary ? article.summary.length : 0;
+  const summaryWords = wordCount(article.summary);
+
+  const barColor = colorForLength(textLen);
+  const barPct = Math.min(100, Math.round(textLen / 80));
+
+  const cardId = `card-${Date.now()}-${index}`;
+
+  let textHtml = '';
+  if (article.text) {
+    if (showFullText) {
+      textHtml = `<div class="text-box" id="text-${cardId}" style="max-height:200px;overflow-y:auto;">${escHtml(article.text)}</div>
+      <button class="expand-btn" onclick="toggleFullText('text-${cardId}', this)">▼ הצג טקסט מלא</button>`;
+    } else {
+      textHtml = `<div class="text-box collapsed" id="text-${cardId}">${escHtml(article.text.substring(0, 600))}${article.text.length > 600 ? '...' : ''}</div>
+      <button class="expand-btn" onclick="expandText('text-${cardId}', '${cardId}', this)" data-full="${encodeURIComponent(article.text)}">▼ הצג טקסט מלא (${textLen.toLocaleString()} תווים)</button>`;
     }
-
-    renderResults(data);
-    renderRaw(data);
-    renderVerdict(data);
-
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = '🔍 הרץ חיפוש';
-    document.getElementById('resultsSection').innerHTML = `<div class="error-box">❌ שגיאת רשת: ${err.message}</div>`;
+  } else {
+    textHtml = `<div class="text-box empty">❌ article.text = null / ריק</div>`;
   }
-}
 
-function renderVerdict(data) {
-  const articles = data.news || [];
-  const total = articles.length;
-  if (total === 0) return;
-
-  const withContent = articles.filter(a => a.text && a.text.length > 200).length;
-  const withSummary = articles.filter(a => a.summary && a.summary.length > 50).length;
-  const avgContentLen = total > 0
-    ? Math.round(articles.reduce((sum, a) => sum + (a.text ? a.text.length : 0), 0) / total)
-    : 0;
-  const hebrewCount = articles.filter(a => a.language === 'he').length;
-
-  const contentPct = Math.round((withContent / total) * 100);
-  const contentColor = contentPct > 60 ? 'green' : contentPct > 30 ? 'orange' : 'red';
-  const hebrewColor = hebrewCount > total * 0.5 ? 'green' : hebrewCount > 0 ? 'orange' : 'red';
-
-  document.getElementById('verdictSection').style.display = 'block';
-  document.getElementById('verdictSection').innerHTML = `
-    <div class="verdict-card">
-      <h3>📊 מסקנות ראשוניות — האם ה-API מספיק לפוזיציה?</h3>
-      <div class="verdict-grid">
-        <div class="verdict-item">
-          <div class="vval ${hebrewColor}">${hebrewCount}/${total}</div>
-          <div class="vlbl">כתבות בעברית</div>
-        </div>
-        <div class="verdict-item">
-          <div class="vval ${contentColor}">${contentPct}%</div>
-          <div class="vlbl">עם תוכן מלא (200+ תווים)</div>
-        </div>
-        <div class="verdict-item">
-          <div class="vval ${avgContentLen > 500 ? 'green' : avgContentLen > 100 ? 'orange' : 'red'}">${avgContentLen.toLocaleString()}</div>
-          <div class="vlbl">אורך תוכן ממוצע (תווים)</div>
-        </div>
-      </div>
+  let summaryHtml = '';
+  if (article.summary) {
+    summaryHtml = `
+    <div class="text-section" style="margin-top:10px;">
+      <div class="text-label">📝 ARTICLE.SUMMARY <span class="text-counts">${summaryLen.toLocaleString()} תווים · ${summaryWords.toLocaleString()} מילים</span></div>
+      <div class="text-box">${escHtml(article.summary)}</div>
     </div>`;
+  }
+
+  return `<div class="article-card" id="${cardId}">
+    <span class="article-num">#${index + 1}</span>
+    <div class="article-title"><a href="${article.url || '#'}" target="_blank" rel="noopener">${escHtml(article.title || 'ללא כותרת')}</a></div>
+    <div class="meta-pills">
+      <span class="pill pill-source">📰 ${escHtml(article.source_country || '—')}</span>
+      <span class="pill pill-domain">🌐 ${escHtml(domain)}</span>
+      <span class="pill pill-lang">${article.language || '—'}</span>
+      <span class="pill pill-date">📅 ${pubDate}</span>
+    </div>
+    <div class="url-row"><a href="${article.url}" target="_blank">${escHtml(article.url || '—')}</a></div>
+    <div class="text-section">
+      <div class="text-label">
+        📄 ARTICLE.TEXT
+        <span class="text-counts" style="color:${barColor};">${textLen.toLocaleString()} תווים · ${textWords.toLocaleString()} מילים</span>
+      </div>
+      <div class="text-bar"><div class="text-bar-fill" style="width:${barPct}%;background:${barColor};"></div></div>
+      ${textHtml}
+    </div>
+    ${summaryHtml}
+  </div>`;
 }
 
-function renderResults(data) {
+function expandText(divId, cardId, btn) {
+  const div = document.getElementById(divId);
+  const full = decodeURIComponent(btn.getAttribute('data-full'));
+  div.classList.remove('collapsed');
+  div.textContent = full;
+  btn.textContent = '▲ כווץ';
+  btn.onclick = () => {
+    div.classList.add('collapsed');
+    div.textContent = full.substring(0, 600) + (full.length > 600 ? '...' : '');
+    btn.textContent = `▼ הצג טקסט מלא (${full.length.toLocaleString()} תווים)`;
+    btn.onclick = () => expandText(divId, cardId, btn);
+  };
+}
+
+function toggleFullText(divId, btn) {
+  const div = document.getElementById(divId);
+  const isCollapsed = div.style.maxHeight === '200px';
+  div.style.maxHeight = isCollapsed ? 'none' : '200px';
+  btn.textContent = isCollapsed ? '▲ כווץ' : '▼ הצג טקסט מלא';
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderStats(data, query) {
   const articles = data.news || [];
   const total = data.available || articles.length;
+  const withText = articles.filter(a => a.text && a.text.length > 100).length;
+  const withSummary = articles.filter(a => a.summary && a.summary.length > 50).length;
+  const avgTextLen = articles.length > 0
+    ? Math.round(articles.reduce((s, a) => s + (a.text ? a.text.length : 0), 0) / articles.length)
+    : 0;
+  const heCount = articles.filter(a => a.language === 'he').length;
 
-  if (articles.length === 0) {
-    document.getElementById('resultsSection').innerHTML = '<div class="empty-state">🔍 לא נמצאו תוצאות. נסה שאילתה אחרת.</div>';
-    document.getElementById('statsSection').style.display = 'none';
-    return;
+  const textPct = articles.length > 0 ? Math.round(withText / articles.length * 100) : 0;
+  const hePct = articles.length > 0 ? Math.round(heCount / articles.length * 100) : 0;
+
+  return `<div class="stats-row">
+    <div class="stat-box"><div class="val">${total.toLocaleString()}</div><div class="lbl">זמין ב-API</div></div>
+    <div class="stat-box"><div class="val">${articles.length}</div><div class="lbl">הוחזרו</div></div>
+    <div class="stat-box"><div class="val" style="color:${hePct>50?'#2E7D32':hePct>0?'#E65100':'#C62828'}">${heCount}</div><div class="lbl">עברית (${hePct}%)</div></div>
+    <div class="stat-box"><div class="val" style="color:${textPct>60?'#2E7D32':textPct>30?'#E65100':'#C62828'}">${withText}</div><div class="lbl">עם טקסט (${textPct}%)</div></div>
+    <div class="stat-box"><div class="val">${avgTextLen.toLocaleString()}</div><div class="lbl">ממוצע תווים</div></div>
+    <div class="stat-box"><div class="val">${withSummary}</div><div class="lbl">עם summary</div></div>
+  </div>`;
+}
+
+// ── TAB 1: FREE SEARCH ───────────────────────────────
+async function runFreeSearch() {
+  const key = getKey(); if (!key) return;
+  const query = document.getElementById('s-query').value.trim();
+  if (!query) { alert('נא להזין שאילתה'); return; }
+  const lang = document.getElementById('s-lang').value;
+  const num = document.getElementById('s-num').value;
+  const hours = document.getElementById('s-hours').value;
+
+  const btn = document.getElementById('s-btn');
+  btn.disabled = true; btn.textContent = '⏳...';
+  document.getElementById('s-results').innerHTML = '<div class="loading"><div class="spin">⏳</div><p style="margin-top:8px;">מחפש...</p></div>';
+
+  try {
+    const data = await fetchNews(key, query, lang, num, hours);
+    const articles = data.news || [];
+
+    let html = renderStats(data, query);
+
+    if (articles.length === 0) {
+      html += '<div class="loading">אין תוצאות</div>';
+    } else {
+      articles.forEach((a, i) => { html += renderArticleCard(a, i, false); });
+    }
+
+    // Raw
+    html += `<button class="raw-toggle" onclick="this.nextSibling.classList.toggle('visible')">▼ Raw JSON Response</button>
+    <pre class="raw-box">${escHtml(JSON.stringify(data, null, 2))}</pre>`;
+
+    document.getElementById('s-results').innerHTML = html;
+  } catch(e) {
+    document.getElementById('s-results').innerHTML = `<div class="err">❌ שגיאה: ${e.message}</div>`;
+  }
+  btn.disabled = false; btn.textContent = '🔍 חפש';
+}
+
+// ── TAB 2: COVERAGE MATRIX ───────────────────────────
+const ISRAELI_PUBLISHERS = [
+  { name: 'Ynet', domains: ['ynet.co.il'] },
+  { name: 'Walla', domains: ['walla.co.il'] },
+  { name: 'Maariv', domains: ['maariv.co.il'] },
+  { name: 'Israel Hayom', domains: ['israelhayom.co.il', 'israelhayom.com'] },
+  { name: 'Haaretz', domains: ['haaretz.co.il', 'haaretz.com'] },
+  { name: 'N12', domains: ['mako.co.il', 'n12.co.il'] },
+  { name: 'Kan', domains: ['kan.org.il'] },
+  { name: 'Globes', domains: ['globes.co.il'] },
+  { name: 'Calcalist', domains: ['calcalist.co.il'] },
+  { name: 'Makor Rishon', domains: ['makorrishon.co.il'] },
+  { name: 'Channel 14', domains: ['c14.co.il', 'channel14.co.il'] },
+  { name: 'TheMarker', domains: ['themarker.com'] },
+  { name: 'Kikar HaShabat', domains: ['kikar.co.il'] },
+  { name: 'Arutz 7', domains: ['inn.co.il', 'arutz7.co.il'] },
+];
+
+const COVERAGE_QUERIES = [
+  'ישראל חדשות',
+  'נתניהו ממשלה',
+  'בגץ משפט',
+  'צבא ביטחון ישראל',
+  'כלכלה שוק ישראל',
+  'פוליטיקה כנסת',
+  'חיזבאללה איראן',
+  'חינוך בריאות ישראל',
+];
+
+async function runCoverageTest() {
+  const key = getKey(); if (!key) return;
+  const hours = document.getElementById('c-hours').value;
+  const num = document.getElementById('c-num').value;
+
+  const btn = document.getElementById('c-btn');
+  btn.disabled = true; btn.textContent = '⏳ בודק...';
+
+  document.getElementById('c-progress').style.display = 'block';
+  document.getElementById('c-results').innerHTML = '';
+
+  // publisher stats map
+  const pubStats = {};
+  ISRAELI_PUBLISHERS.forEach(p => {
+    pubStats[p.name] = {
+      ...p,
+      articles: [],
+      found: 0,
+    };
+  });
+  const unknownDomains = {};
+  let allArticles = [];
+
+  for (let i = 0; i < COVERAGE_QUERIES.length; i++) {
+    const q = COVERAGE_QUERIES[i];
+    document.getElementById('c-progress-text').textContent = `שאילתה ${i+1}/${COVERAGE_QUERIES.length}: "${q}"...`;
+    document.getElementById('c-progress-bar').style.width = `${Math.round((i / COVERAGE_QUERIES.length) * 100)}%`;
+
+    try {
+      const data = await fetchNews(key, q, 'he', num, hours);
+      const articles = data.news || [];
+      allArticles = allArticles.concat(articles);
+
+      articles.forEach(a => {
+        const domain = getDomain(a.url);
+        // match to known publisher
+        let matched = false;
+        for (const pub of ISRAELI_PUBLISHERS) {
+          if (pub.domains.some(d => domain.includes(d))) {
+            pubStats[pub.name].articles.push(a);
+            pubStats[pub.name].found++;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched && domain && domain !== 'לא ידוע') {
+          unknownDomains[domain] = (unknownDomains[domain] || 0) + 1;
+        }
+      });
+    } catch(e) {
+      console.warn(`Query "${q}" failed:`, e.message);
+    }
+    await new Promise(r => setTimeout(r, 300)); // small delay between calls
   }
 
-  const withContent = articles.filter(a => a.text && a.text.length > 100).length;
-  const avgLen = Math.round(articles.reduce((sum, a) => sum + (a.text ? a.text.length : 0), 0) / articles.length);
+  document.getElementById('c-progress-bar').style.width = '100%';
+  document.getElementById('c-progress-text').textContent = 'מחשב תוצאות...';
 
-  document.getElementById('statsSection').style.display = 'block';
-  document.getElementById('statsSection').innerHTML = `
-    <div class="stats-row">
-      <div class="stat-box"><div class="val">${total.toLocaleString()}</div><div class="lbl">סה"כ זמין ב-API</div></div>
-      <div class="stat-box"><div class="val">${articles.length}</div><div class="lbl">הוחזרו בבקשה זו</div></div>
-      <div class="stat-box"><div class="val">${withContent}</div><div class="lbl">עם תוכן טקסט</div></div>
-      <div class="stat-box"><div class="val">${avgLen.toLocaleString()}</div><div class="lbl">אורך ממוצע (תווים)</div></div>
-    </div>`;
+  // Render matrix
+  let html = '';
 
-  const maxLen = Math.max(...articles.map(a => a.text ? a.text.length : 0));
+  // Summary verdict
+  const covered = Object.values(pubStats).filter(p => p.found > 0).length;
+  const total = ISRAELI_PUBLISHERS.length;
+  const verdictClass = covered >= total * 0.6 ? 'good' : covered >= total * 0.3 ? 'warn' : 'bad';
 
-  let html = `<div class="results-header"><h2>תוצאות (${articles.length} כתבות)</h2></div>`;
+  html += `<div class="verdict ${verdictClass}">
+    <h3>📊 תוצאות כיסוי: ${covered}/${total} מקורות נמצאו</h3>
+    <div class="verdict-grid">
+      <div class="vitem"><div class="vv ${covered>=8?'green':covered>=4?'orange':'red'}">${covered}/${total}</div><div class="vl">מקורות מכוסים</div></div>
+      <div class="vitem"><div class="vv">${allArticles.length}</div><div class="vl">כתבות סה"כ</div></div>
+      <div class="vitem"><div class="vv">${Object.keys(unknownDomains).length}</div><div class="vl">דומיינים לא מזוהים</div></div>
+    </div>
+  </div>`;
 
-  articles.forEach((article, i) => {
-    const contentLen = article.text ? article.text.length : 0;
-    const summaryLen = article.summary ? article.summary.length : 0;
-    const barWidth = maxLen > 0 ? Math.round((contentLen / maxLen) * 100) : 0;
-    const pubDate = article.publish_date ? new Date(article.publish_date).toLocaleString('he-IL') : 'לא ידוע';
+  // Matrix table
+  html += `<div class="card">
+  <h2>מטריצת כיסוי לפי מקור</h2>
+  <div style="overflow-x:auto;">
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th>מקור</th>
+        <th>דומיין</th>
+        <th>כתבות שנמצאו</th>
+        <th>טקסט מלא</th>
+        <th>ממוצע תווים</th>
+        <th>ממוצע מילים</th>
+        <th>כתבה אחרונה</th>
+        <th>דוגמת URL</th>
+      </tr>
+    </thead>
+    <tbody>`;
 
-    const contentPreview = article.text
-      ? article.text.substring(0, 400) + (article.text.length > 400 ? '...' : '')
-      : null;
-    const summaryPreview = article.summary
-      ? article.summary.substring(0, 300) + (article.summary.length > 300 ? '...' : '')
-      : null;
+  ISRAELI_PUBLISHERS.forEach(pub => {
+    const stats = pubStats[pub.name];
+    const arts = stats.articles;
+    const found = arts.length;
+    const withText = arts.filter(a => a.text && a.text.length > 200).length;
+    const avgLen = found > 0 ? Math.round(arts.reduce((s,a) => s+(a.text?a.text.length:0),0)/found) : 0;
+    const avgWords = found > 0 ? Math.round(arts.reduce((s,a) => s+wordCount(a.text),0)/found) : 0;
 
-    html += `
-    <div class="article-card">
-      <div class="article-top">
-        <div class="article-title">
-          <a href="${article.url || '#'}" target="_blank" rel="noopener">${article.title || 'ללא כותרת'}</a>
-        </div>
-        <span style="font-size:12px;color:#aaa;white-space:nowrap;">#${i + 1}</span>
-      </div>
+    let textStatus = '', textClass = '';
+    if (found === 0) { textStatus = '—'; textClass = 'coverage-unknown'; }
+    else if (withText === found) { textStatus = '✅ כן'; textClass = 'coverage-yes'; }
+    else if (withText > 0) { textStatus = '⚠️ חלקי'; textClass = 'coverage-partial'; }
+    else { textStatus = '❌ לא'; textClass = 'coverage-no'; }
 
-      <div class="article-meta">
-        <span class="meta-pill pill-source">📰 ${article.source_country || ''} · ${article.authors ? article.authors.join(', ') : 'לא ידוע'}</span>
-        <span class="meta-pill pill-lang">🌐 ${article.language || 'לא ידוע'}</span>
-        <span class="meta-pill pill-date">📅 ${pubDate}</span>
-        ${article.sentiment !== undefined ? `<span class="meta-pill pill-score">💬 sentiment: ${article.sentiment}</span>` : ''}
-      </div>
+    const lastDate = arts.length > 0 && arts[0].publish_date
+      ? new Date(arts[0].publish_date).toLocaleDateString('he-IL')
+      : '—';
+    const exampleUrl = arts.length > 0 ? arts[0].url : '';
+    const exampleDomain = exampleUrl ? getDomain(exampleUrl) : pub.domains[0];
 
-      <div style="font-size:12px;color:#888;word-break:break-all;margin-bottom:8px;">
-        🔗 <a href="${article.url}" target="_blank" style="color:#185FA5;">${article.url || 'אין URL'}</a>
-      </div>
+    const rowClass = found > 0 ? 'has-content' : '';
 
-      <div class="content-section">
-        <div class="content-label">📄 תוכן מלא (article.text) — ${contentLen.toLocaleString()} תווים</div>
-        ${contentPreview
-          ? `<div class="content-box">${contentPreview}</div>`
-          : `<div class="content-box empty">❌ אין תוכן טקסט (text = null או ריק)</div>`}
-        <div class="content-bar"><div class="content-bar-fill" style="width:${barWidth}%"></div></div>
-        <div class="content-length">${contentLen > 0 ? `✅ ${contentLen.toLocaleString()} תווים · ~${Math.round(contentLen/5)} מילים` : '❌ אין תוכן'}</div>
-      </div>
-
-      ${summaryPreview ? `
-      <div class="content-section" style="margin-top:10px;">
-        <div class="content-label">📝 סיכום (article.summary) — ${summaryLen.toLocaleString()} תווים</div>
-        <div class="content-box">${summaryPreview}</div>
-      </div>` : ''}
-
-      ${article.image ? `
-      <div style="margin-top:10px;font-size:12px;color:#888;">
-        🖼️ תמונה: <a href="${article.image}" target="_blank" style="color:#185FA5;">${article.image.substring(0, 80)}...</a>
-      </div>` : '<div style="margin-top:6px;font-size:12px;color:#aaa;">🖼️ אין תמונה</div>'}
-    </div>`;
+    html += `<tr class="${rowClass}">
+      <td><strong>${pub.name}</strong></td>
+      <td style="font-size:11px;color:#888;">${exampleDomain}</td>
+      <td style="text-align:center;"><strong ${found>0?'style="color:#2E7D32"':'style="color:#C62828"'}>${found}</strong></td>
+      <td class="${textClass}">${textStatus}</td>
+      <td style="text-align:center;">${avgLen > 0 ? avgLen.toLocaleString() : '—'}</td>
+      <td style="text-align:center;">${avgWords > 0 ? avgWords.toLocaleString() : '—'}</td>
+      <td style="font-size:11px;">${lastDate}</td>
+      <td style="font-size:10px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+        ${exampleUrl ? `<a href="${exampleUrl}" target="_blank" style="color:#185FA5;">${escHtml(exampleUrl.substring(0,60))}...</a>` : '—'}
+      </td>
+    </tr>`;
   });
 
-  document.getElementById('resultsSection').innerHTML = html;
+  html += `</tbody></table></div></div>`;
+
+  // Unknown domains
+  if (Object.keys(unknownDomains).length > 0) {
+    const sorted = Object.entries(unknownDomains).sort((a,b) => b[1]-a[1]);
+    html += `<div class="card">
+      <h2>🆕 דומיינים נוספים שנמצאו (לא ברשימת המטרה)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+        ${sorted.map(([d,c]) => `<span class="pill pill-domain" style="font-size:12px;">${escHtml(d)} (${c})</span>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Technical conclusion
+  const coveredNames = Object.entries(pubStats).filter(([,v]) => v.found > 0).map(([k]) => k);
+  const missingNames = Object.entries(pubStats).filter(([,v]) => v.found === 0).map(([k]) => k);
+  const withFullText = Object.entries(pubStats).filter(([,v]) => {
+    const arts = v.articles;
+    return arts.length > 0 && arts.filter(a => a.text && a.text.length > 500).length > 0;
+  }).map(([k]) => k);
+
+  const totalTextLen = allArticles.reduce((s,a) => s+(a.text?a.text.length:0), 0);
+  const avgGlobal = allArticles.length > 0 ? Math.round(totalTextLen / allArticles.length) : 0;
+  const sufficientForLLM = avgGlobal > 1000 && withFullText.length >= 3;
+
+  html += `<div class="conclusion-card">
+    <h3>🔬 מסקנה טכנית</h3>
+    <div class="conclusion-item">
+      <span class="conclusion-num">1</span>
+      <span>
+        <strong>האם ARTICLE.TEXT מספיק לניתוח LLM?</strong><br>
+        <span style="color:${sufficientForLLM?'#2E7D32':'#C62828'};">
+          ${sufficientForLLM
+            ? `✅ כן — ממוצע ${avgGlobal.toLocaleString()} תווים לכתבה, מספיק לסינתזה רב-מקורית.`
+            : `⚠️ חלקי — ממוצע ${avgGlobal.toLocaleString()} תווים לכתבה. ייתכן שחסר תוכן מלא ממקורות מסוימים.`}
+        </span>
+      </span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">2</span>
+      <span>
+        <strong>מקורות ישראליים מכוסים בצורה אמינה:</strong><br>
+        ${coveredNames.length > 0
+          ? coveredNames.map(n => `<span class="pill pill-source" style="display:inline-flex;margin:2px;">${n}</span>`).join('')
+          : '<span style="color:#C62828;">אף מקור לא נמצא</span>'}
+      </span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">3</span>
+      <span>
+        <strong>מקורות חסרים או עם כיסוי דל:</strong><br>
+        ${missingNames.length > 0
+          ? missingNames.map(n => `<span class="pill" style="background:#FFEBEE;color:#C62828;display:inline-flex;margin:2px;">${n}</span>`).join('')
+          : '<span style="color:#2E7D32;">✅ כולם מכוסים</span>'}
+      </span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">4</span>
+      <span>
+        <strong>האם הכיסוי מספיק לפוזיציה?</strong><br>
+        ${covered >= 6
+          ? `✅ ${covered} מקורות נמצאו — כיסוי מספיק לבניית סינתזה רב-מקורית.`
+          : covered >= 3
+          ? `⚠️ ${covered} מקורות בלבד. ניתן לעבוד, אך הכיסוי מוגבל — ייתכן שה-API נוטה למקורות ספציפיים.`
+          : `❌ רק ${covered} מקורות. הכיסוי לא מספיק לפוזיציה ללא מקורות נוספים.`}
+      </span>
+    </div>
+  </div>`;
+
+  document.getElementById('c-results').innerHTML = html;
+  document.getElementById('c-progress').style.display = 'none';
+  btn.disabled = false; btn.textContent = '🚀 הרץ בדיקת כיסוי';
 }
 
-function renderRaw(data) {
-  document.getElementById('rawSection').style.display = 'block';
-  document.getElementById('rawBox').textContent = JSON.stringify(data, null, 2);
+// ── TAB 3: FULL TEXT TEST ────────────────────────────
+async function runTextTest() {
+  const key = getKey(); if (!key) return;
+  const query = document.getElementById('t-query').value.trim();
+  if (!query) { alert('נא להזין שאילתה'); return; }
+  const lang = document.getElementById('t-lang').value;
+  const num = document.getElementById('t-num').value;
+  const hours = document.getElementById('t-hours').value;
+
+  const btn = document.getElementById('t-btn');
+  btn.disabled = true; btn.textContent = '⏳...';
+  document.getElementById('t-results').innerHTML = '<div class="loading"><div class="spin">⏳</div><p style="margin-top:8px;">טוען...</p></div>';
+
+  try {
+    const data = await fetchNews(key, query, lang, num, hours);
+    const articles = data.news || [];
+
+    let html = renderStats(data, query);
+
+    if (articles.length === 0) {
+      html += '<div class="loading">אין תוצאות</div>';
+    } else {
+      // Show full text cards
+      articles.forEach((a, i) => {
+        const textLen = a.text ? a.text.length : 0;
+        const textWords = wordCount(a.text);
+        const summaryLen = a.summary ? a.summary.length : 0;
+        const summaryWords = wordCount(a.summary);
+        const domain = getDomain(a.url);
+        const pubDate = a.publish_date ? new Date(a.publish_date).toLocaleString('he-IL') : '—';
+        const barColor = colorForLength(textLen);
+        const barPct = Math.min(100, Math.round(textLen / 80));
+        const cardId = `tcard-${i}`;
+
+        html += `<div class="article-card" id="${cardId}">
+          <span class="article-num">#${i+1}</span>
+          <div class="article-title"><a href="${a.url||'#'}" target="_blank">${escHtml(a.title||'ללא כותרת')}</a></div>
+          <div class="meta-pills">
+            <span class="pill pill-domain">${escHtml(domain)}</span>
+            <span class="pill pill-lang">${a.language||'—'}</span>
+            <span class="pill pill-date">${pubDate}</span>
+          </div>
+          <div class="url-row"><a href="${a.url}" target="_blank">${escHtml(a.url||'—')}</a></div>
+
+          <div class="text-section">
+            <div class="text-label">📄 ARTICLE.TEXT <span class="text-counts" style="color:${barColor};">${textLen.toLocaleString()} תווים · ${textWords.toLocaleString()} מילים</span></div>
+            <div class="text-bar"><div class="text-bar-fill" style="width:${barPct}%;background:${barColor};"></div></div>
+            ${a.text
+              ? `<div class="text-box" id="fulltext-${i}" style="max-height:180px;overflow-y:hidden;">${escHtml(a.text)}</div>
+                 <button class="expand-btn" onclick="
+                   var d=document.getElementById('fulltext-${i}');
+                   var expanded=d.style.maxHeight==='none';
+                   d.style.maxHeight=expanded?'180px':'none';
+                   this.textContent=expanded?'▼ הצג טקסט מלא (${textLen.toLocaleString()} תווים)':'▲ כווץ';
+                 ">▼ הצג טקסט מלא (${textLen.toLocaleString()} תווים)</button>`
+              : `<div class="text-box empty">❌ אין טקסט</div>`}
+          </div>
+
+          ${a.summary ? `
+          <div class="text-section" style="margin-top:12px;">
+            <div class="text-label">📝 ARTICLE.SUMMARY <span class="text-counts">${summaryLen.toLocaleString()} תווים · ${summaryWords.toLocaleString()} מילים</span></div>
+            <div class="text-box">${escHtml(a.summary)}</div>
+          </div>` : `<div style="margin-top:8px;font-size:12px;color:#aaa;">❌ אין summary</div>`}
+
+          ${a.image ? `<div style="margin-top:8px;font-size:11px;color:#888;">🖼️ <a href="${a.image}" target="_blank" style="color:#185FA5;">${escHtml(a.image.substring(0,80))}</a></div>` : ''}
+        </div>`;
+      });
+    }
+
+    // Raw
+    html += `<button class="raw-toggle" onclick="this.nextSibling.classList.toggle('visible')">▼ Raw JSON Response</button>
+    <pre class="raw-box">${escHtml(JSON.stringify(data, null, 2))}</pre>`;
+
+    document.getElementById('t-results').innerHTML = html;
+  } catch(e) {
+    document.getElementById('t-results').innerHTML = `<div class="err">❌ שגיאה: ${e.message}</div>`;
+  }
+  btn.disabled = false; btn.textContent = '🔍 חפש';
 }
 
-// Enter key triggers search
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' && document.activeElement.id === 'query') {
-    runSearch();
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    if (document.activeElement.id === 's-query') runFreeSearch();
+    if (document.activeElement.id === 't-query') runTextTest();
   }
 });
 </script>
