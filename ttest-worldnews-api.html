@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World News API — בדיקת היתכנות | פוזיציה</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7f7f5; color: #1a1a1a; direction: rtl; }
+
+.header { background: #0D3F7A; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.header h1 { font-size: 18px; }
+.header .badge { background: rgba(255,255,255,0.2); font-size: 11px; padding: 4px 10px; border-radius: 20px; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+
+.notice { background: #FFF3E0; border: 1px solid #FFB74D; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: #E65100; }
+
+.search-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; }
+.search-card h2 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: #0D3F7A; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+label { font-size: 12px; font-weight: 600; color: #555; }
+input, select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 7px; font-size: 14px; font-family: inherit; direction: rtl; }
+input:focus, select:focus { outline: none; border-color: #185FA5; }
+
+.btn { background: #185FA5; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.btn:hover { background: #0D3F7A; }
+.btn:disabled { background: #ccc; cursor: not-allowed; }
+.btn-secondary { background: #f0f0ee; color: #555; border: 1px solid #ddd; margin-right: 8px; }
+.btn-secondary:hover { background: #e8e8e5; }
+
+.stats-row { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+.stat-box { background: #fff; border: 1px solid #E4E2D8; border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 140px; }
+.stat-box .val { font-size: 24px; font-weight: 700; color: #0D3F7A; }
+.stat-box .lbl { font-size: 11px; color: #888; margin-top: 2px; }
+
+.results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.results-header h2 { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+.view-toggle { display: flex; gap: 4px; }
+.view-btn { padding: 5px 12px; border: 1px solid #ddd; background: #fff; border-radius: 6px; font-size: 12px; cursor: pointer; }
+.view-btn.active { background: #185FA5; color: #fff; border-color: #185FA5; }
+
+.article-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.article-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.article-title { font-size: 15px; font-weight: 700; line-height: 1.4; flex: 1; }
+.article-title a { color: #1a1a1a; text-decoration: none; }
+.article-title a:hover { color: #185FA5; }
+
+.article-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
+.meta-pill { font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+.pill-source { background: #EEF4FC; color: #185FA5; border: 1px solid #C8DDEF; }
+.pill-lang { background: #F3E5F5; color: #7B1FA2; }
+.pill-date { background: #F1F8E9; color: #388E3C; }
+.pill-score { background: #FFF3E0; color: #E65100; }
+
+.content-section { margin-top: 10px; }
+.content-label { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.content-box { background: #f7f7f5; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.6; color: #333; border: 1px solid #eee; }
+.content-box.empty { color: #aaa; font-style: italic; }
+.content-length { font-size: 11px; color: #888; margin-top: 4px; }
+
+.content-bar { height: 6px; border-radius: 3px; background: #eee; margin-top: 6px; overflow: hidden; }
+.content-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #E65100, #185FA5); transition: width 0.3s; }
+
+.raw-section { margin-top: 20px; }
+.raw-toggle { font-size: 12px; color: #185FA5; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }
+.raw-box { background: #1a1a2a; color: #a8d8a8; border-radius: 8px; padding: 16px; font-family: 'Courier New', monospace; font-size: 11px; line-height: 1.5; overflow-x: auto; margin-top: 8px; max-height: 400px; overflow-y: auto; display: none; direction: ltr; text-align: left; }
+.raw-box.visible { display: block; }
+
+.loading { text-align: center; padding: 40px; color: #888; font-size: 14px; }
+.loading .spinner { font-size: 32px; animation: spin 1s linear infinite; display: inline-block; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.error-box { background: #FFEBEE; border: 1px solid #EF9A9A; border-radius: 8px; padding: 14px 16px; color: #C62828; font-size: 13px; }
+
+.empty-state { text-align: center; padding: 40px; color: #888; }
+
+.verdict-card { background: #E8F5E9; border: 1px solid #A5D6A7; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; }
+.verdict-card h3 { font-size: 14px; font-weight: 700; color: #2E7D32; margin-bottom: 8px; }
+.verdict-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.verdict-item { background: #fff; border-radius: 7px; padding: 10px 12px; text-align: center; }
+.verdict-item .vval { font-size: 20px; font-weight: 700; }
+.verdict-item .vlbl { font-size: 11px; color: #888; }
+.green { color: #2E7D32; }
+.orange { color: #E65100; }
+.red { color: #C62828; }
+
+.key-input-row { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; background: #f0f4fb; border-radius: 8px; padding: 10px 14px; }
+.key-input-row label { font-size: 12px; font-weight: 600; color: #185FA5; white-space: nowrap; }
+.key-input-row input { flex: 1; font-family: monospace; font-size: 12px; direction: ltr; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🧪 World News API — בדיקת היתכנות לפוזיציה</h1>
+  <span class="badge">טסט בלבד · לא מחובר לאתר</span>
+</div>
+
+<div class="container">
+
+  <div class="notice">
+    ⚠️ דף זה הוא כלי פיתוח בלבד. אין לשתף את ה-API key. אין לשלוח דף זה למשתמשים.
+  </div>
+
+  <div class="search-card">
+    <h2>הגדרות חיפוש</h2>
+
+    <div class="key-input-row">
+      <label>🔑 API Key:</label>
+      <input type="password" id="apiKey" placeholder="הדבק את ה-API key כאן" value="">
+      <button class="btn btn-secondary" onclick="toggleKeyVisibility()">הצג</button>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>נושא / שאילתת חיפוש</label>
+        <input type="text" id="query" placeholder="לדוגמה: נתניהו, חיזבאללה, בג&quot;ץ, רצח עם..." value="ישראל">
+      </div>
+      <div class="form-group">
+        <label>שפה</label>
+        <select id="language">
+          <option value="he">עברית (he)</option>
+          <option value="">כל השפות</option>
+          <option value="en">אנגלית (en)</option>
+          <option value="ar">ערבית (ar)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>מספר תוצאות</label>
+        <select id="number">
+          <option value="10">10 כתבות</option>
+          <option value="20" selected>20 כתבות</option>
+          <option value="50">50 כתבות</option>
+          <option value="100">100 כתבות (מקסימום)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>טווח זמן (שעות אחורה)</label>
+        <select id="hours">
+          <option value="24">24 שעות</option>
+          <option value="48" selected>48 שעות</option>
+          <option value="72">72 שעות</option>
+          <option value="168">שבוע</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>מיין לפי</label>
+        <select id="sort">
+          <option value="publish-time">תאריך פרסום</option>
+          <option value="relevance">רלוונטיות</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn" onclick="runSearch()" id="searchBtn">🔍 הרץ חיפוש</button>
+      <button class="btn btn-secondary" onclick="clearResults()">נקה תוצאות</button>
+    </div>
+  </div>
+
+  <div id="verdictSection" style="display:none;"></div>
+  <div id="statsSection" style="display:none;"></div>
+  <div id="resultsSection"></div>
+  <div id="rawSection" style="display:none;">
+    <div class="raw-section">
+      <button class="raw-toggle" onclick="toggleRaw()">▼ הצג/הסתר תגובת API גולמית (Raw Response)</button>
+      <pre class="raw-box" id="rawBox"></pre>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let lastResponse = null;
+
+function toggleKeyVisibility() {
+  const input = document.getElementById('apiKey');
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+function toggleRaw() {
+  document.getElementById('rawBox').classList.toggle('visible');
+}
+
+function clearResults() {
+  document.getElementById('resultsSection').innerHTML = '';
+  document.getElementById('statsSection').style.display = 'none';
+  document.getElementById('rawSection').style.display = 'none';
+  document.getElementById('verdictSection').style.display = 'none';
+  lastResponse = null;
+}
+
+function getHoursAgo(hours) {
+  const d = new Date();
+  d.setHours(d.getHours() - parseInt(hours));
+  return d.toISOString().replace('T', ' ').substring(0, 19);
+}
+
+async function runSearch() {
+  const apiKey = document.getElementById('apiKey').value.trim();
+  const query = document.getElementById('query').value.trim();
+  const language = document.getElementById('language').value;
+  const number = document.getElementById('number').value;
+  const hours = document.getElementById('hours').value;
+  const sort = document.getElementById('sort').value;
+
+  if (!apiKey) {
+    alert('נא להזין API key');
+    return;
+  }
+  if (!query) {
+    alert('נא להזין שאילתת חיפוש');
+    return;
+  }
+
+  const btn = document.getElementById('searchBtn');
+  btn.disabled = true;
+  btn.textContent = '⏳ מחפש...';
+
+  document.getElementById('resultsSection').innerHTML = '<div class="loading"><div class="spinner">⏳</div><p style="margin-top:12px;">שולח בקשה ל-World News API...</p></div>';
+  document.getElementById('statsSection').style.display = 'none';
+  document.getElementById('rawSection').style.display = 'none';
+  document.getElementById('verdictSection').style.display = 'none';
+
+  const earliestDate = getHoursAgo(hours);
+  const params = new URLSearchParams({
+    'api-key': apiKey,
+    'text': query,
+    'number': number,
+    'sort': sort,
+    'sort-direction': 'DESC',
+    'earliest-publish-date': earliestDate,
+  });
+  if (language) params.append('language', language);
+
+  const url = `https://api.worldnewsapi.com/search-news?${params.toString()}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    lastResponse = data;
+
+    btn.disabled = false;
+    btn.textContent = '🔍 הרץ חיפוש';
+
+    if (!response.ok) {
+      document.getElementById('resultsSection').innerHTML = `<div class="error-box">❌ שגיאת API: ${data.message || response.status}<br><small>${JSON.stringify(data)}</small></div>`;
+      return;
+    }
+
+    renderResults(data);
+    renderRaw(data);
+    renderVerdict(data);
+
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = '🔍 הרץ חיפוש';
+    document.getElementById('resultsSection').innerHTML = `<div class="error-box">❌ שגיאת רשת: ${err.message}</div>`;
+  }
+}
+
+function renderVerdict(data) {
+  const articles = data.news || [];
+  const total = articles.length;
+  if (total === 0) return;
+
+  const withContent = articles.filter(a => a.text && a.text.length > 200).length;
+  const withSummary = articles.filter(a => a.summary && a.summary.length > 50).length;
+  const avgContentLen = total > 0
+    ? Math.round(articles.reduce((sum, a) => sum + (a.text ? a.text.length : 0), 0) / total)
+    : 0;
+  const hebrewCount = articles.filter(a => a.language === 'he').length;
+
+  const contentPct = Math.round((withContent / total) * 100);
+  const contentColor = contentPct > 60 ? 'green' : contentPct > 30 ? 'orange' : 'red';
+  const hebrewColor = hebrewCount > total * 0.5 ? 'green' : hebrewCount > 0 ? 'orange' : 'red';
+
+  document.getElementById('verdictSection').style.display = 'block';
+  document.getElementById('verdictSection').innerHTML = `
+    <div class="verdict-card">
+      <h3>📊 מסקנות ראשוניות — האם ה-API מספיק לפוזיציה?</h3>
+      <div class="verdict-grid">
+        <div class="verdict-item">
+          <div class="vval ${hebrewColor}">${hebrewCount}/${total}</div>
+          <div class="vlbl">כתבות בעברית</div>
+        </div>
+        <div class="verdict-item">
+          <div class="vval ${contentColor}">${contentPct}%</div>
+          <div class="vlbl">עם תוכן מלא (200+ תווים)</div>
+        </div>
+        <div class="verdict-item">
+          <div class="vval ${avgContentLen > 500 ? 'green' : avgContentLen > 100 ? 'orange' : 'red'}">${avgContentLen.toLocaleString()}</div>
+          <div class="vlbl">אורך תוכן ממוצע (תווים)</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderResults(data) {
+  const articles = data.news || [];
+  const total = data.available || articles.length;
+
+  if (articles.length === 0) {
+    document.getElementById('resultsSection').innerHTML = '<div class="empty-state">🔍 לא נמצאו תוצאות. נסה שאילתה אחרת.</div>';
+    document.getElementById('statsSection').style.display = 'none';
+    return;
+  }
+
+  const withContent = articles.filter(a => a.text && a.text.length > 100).length;
+  const avgLen = Math.round(articles.reduce((sum, a) => sum + (a.text ? a.text.length : 0), 0) / articles.length);
+
+  document.getElementById('statsSection').style.display = 'block';
+  document.getElementById('statsSection').innerHTML = `
+    <div class="stats-row">
+      <div class="stat-box"><div class="val">${total.toLocaleString()}</div><div class="lbl">סה"כ זמין ב-API</div></div>
+      <div class="stat-box"><div class="val">${articles.length}</div><div class="lbl">הוחזרו בבקשה זו</div></div>
+      <div class="stat-box"><div class="val">${withContent}</div><div class="lbl">עם תוכן טקסט</div></div>
+      <div class="stat-box"><div class="val">${avgLen.toLocaleString()}</div><div class="lbl">אורך ממוצע (תווים)</div></div>
+    </div>`;
+
+  const maxLen = Math.max(...articles.map(a => a.text ? a.text.length : 0));
+
+  let html = `<div class="results-header"><h2>תוצאות (${articles.length} כתבות)</h2></div>`;
+
+  articles.forEach((article, i) => {
+    const contentLen = article.text ? article.text.length : 0;
+    const summaryLen = article.summary ? article.summary.length : 0;
+    const barWidth = maxLen > 0 ? Math.round((contentLen / maxLen) * 100) : 0;
+    const pubDate = article.publish_date ? new Date(article.publish_date).toLocaleString('he-IL') : 'לא ידוע';
+
+    const contentPreview = article.text
+      ? article.text.substring(0, 400) + (article.text.length > 400 ? '...' : '')
+      : null;
+    const summaryPreview = article.summary
+      ? article.summary.substring(0, 300) + (article.summary.length > 300 ? '...' : '')
+      : null;
+
+    html += `
+    <div class="article-card">
+      <div class="article-top">
+        <div class="article-title">
+          <a href="${article.url || '#'}" target="_blank" rel="noopener">${article.title || 'ללא כותרת'}</a>
+        </div>
+        <span style="font-size:12px;color:#aaa;white-space:nowrap;">#${i + 1}</span>
+      </div>
+
+      <div class="article-meta">
+        <span class="meta-pill pill-source">📰 ${article.source_country || ''} · ${article.authors ? article.authors.join(', ') : 'לא ידוע'}</span>
+        <span class="meta-pill pill-lang">🌐 ${article.language || 'לא ידוע'}</span>
+        <span class="meta-pill pill-date">📅 ${pubDate}</span>
+        ${article.sentiment !== undefined ? `<span class="meta-pill pill-score">💬 sentiment: ${article.sentiment}</span>` : ''}
+      </div>
+
+      <div style="font-size:12px;color:#888;word-break:break-all;margin-bottom:8px;">
+        🔗 <a href="${article.url}" target="_blank" style="color:#185FA5;">${article.url || 'אין URL'}</a>
+      </div>
+
+      <div class="content-section">
+        <div class="content-label">📄 תוכן מלא (article.text) — ${contentLen.toLocaleString()} תווים</div>
+        ${contentPreview
+          ? `<div class="content-box">${contentPreview}</div>`
+          : `<div class="content-box empty">❌ אין תוכן טקסט (text = null או ריק)</div>`}
+        <div class="content-bar"><div class="content-bar-fill" style="width:${barWidth}%"></div></div>
+        <div class="content-length">${contentLen > 0 ? `✅ ${contentLen.toLocaleString()} תווים · ~${Math.round(contentLen/5)} מילים` : '❌ אין תוכן'}</div>
+      </div>
+
+      ${summaryPreview ? `
+      <div class="content-section" style="margin-top:10px;">
+        <div class="content-label">📝 סיכום (article.summary) — ${summaryLen.toLocaleString()} תווים</div>
+        <div class="content-box">${summaryPreview}</div>
+      </div>` : ''}
+
+      ${article.image ? `
+      <div style="margin-top:10px;font-size:12px;color:#888;">
+        🖼️ תמונה: <a href="${article.image}" target="_blank" style="color:#185FA5;">${article.image.substring(0, 80)}...</a>
+      </div>` : '<div style="margin-top:6px;font-size:12px;color:#aaa;">🖼️ אין תמונה</div>'}
+    </div>`;
+  });
+
+  document.getElementById('resultsSection').innerHTML = html;
+}
+
+function renderRaw(data) {
+  document.getElementById('rawSection').style.display = 'block';
+  document.getElementById('rawBox').textContent = JSON.stringify(data, null, 2);
+}
+
+// Enter key triggers search
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && document.activeElement.id === 'query') {
+    runSearch();
+  }
+});
+</script>
+</body>
+</html>
