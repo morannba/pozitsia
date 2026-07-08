@@ -183,7 +183,7 @@ function timeAgo(dateStr) {
 }
 
 // ── FEED ──
-fetch('stories.json')
+fetch('/api/stories')
   .then(r => r.json())
   .then(stories => {
     var feed = document.getElementById('feed');
