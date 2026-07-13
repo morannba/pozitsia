@@ -79,6 +79,8 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
 
 /* ── SIDEBAR ── */
 .sidebar-col { position: sticky; top: 72px; }
+.sidebar-block { margin-bottom: 28px; }
+.sidebar-block:last-child { margin-bottom: 0; }
 .sitrep-label { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
 .sitrep-label-text { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #8A8878; white-space: nowrap; }
 .sitrep-label-line { flex: 1; height: 1px; background: #E4E2D8; }
@@ -98,6 +100,22 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
 .sitrep-cta { font-size: 12px; font-weight: 600; color: #185FA5; display: flex; align-items: center; gap: 4px; }
 .sitrep-cta::after { content: "←"; font-size: 13px; }
 .sitrep-updated { font-size: 10px; color: #B4B2A9; }
+
+/* ── ELECTIONS WIDGET (same visual language, distinct accent) ── */
+.election-card { background: #fff; border: 1px solid #E4E2D8; border-radius: 14px; overflow: hidden; text-decoration: none; color: inherit; display: block; position: relative; transition: box-shadow 0.2s, border-color 0.2s; }
+.election-card:hover { border-color: #0D3F7A; box-shadow: 0 4px 20px rgba(13,63,122,0.1); }
+.election-card::before { content: ""; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: linear-gradient(180deg,#0D3F7A 0%,#185FA5 100%); border-radius: 0 14px 14px 0; }
+.election-inner { padding: 18px 20px 18px 16px; }
+.election-type { font-size: 10px; font-weight: 700; color: #0D3F7A; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+.election-title { font-family: 'Frank Ruhl Libre', Georgia, serif; font-size: 17px; font-weight: 700; line-height: 1.45; color: #1a1a1a; margin-bottom: 10px; }
+.election-summary { font-size: 12px; color: #5A5850; line-height: 1.65; margin-bottom: 14px; }
+.election-divider { height: 1px; background: #EEEDE5; margin-bottom: 14px; }
+.election-footer { display: flex; align-items: center; justify-content: space-between; }
+.election-cta { font-size: 12px; font-weight: 600; color: #0D3F7A; display: flex; align-items: center; gap: 4px; }
+.election-cta::after { content: "←"; font-size: 13px; }
+.election-updated { font-size: 10px; color: #B4B2A9; }
+.election-see-all { display: block; text-align: center; font-size: 11px; font-weight: 600; color: #0D3F7A; text-decoration: none; margin-top: 10px; }
+.election-see-all:hover { text-decoration: underline; }
 
 /* ── MOBILE ── */
 @media (max-width: 899px) {
@@ -140,30 +158,44 @@ nav { background: #fff; border-bottom: 1px solid #eee; height: 52px; padding: 0 
 
   <!-- ═══ SIDEBAR ═══ -->
   <aside class="sidebar-col">
-    <div class="sitrep-label">
-      <span class="sitrep-label-text">🧠 תמונת מצב</span>
-      <div class="sitrep-label-line"></div>
-    </div>
-    <a class="sitrep-card" href="sitrep-hezbollah.html">
-      <div class="sitrep-inner">
-        <span class="sitrep-type">ניתוח גיאופוליטי · שבועי</span>
-        <div class="sitrep-title">ישראל וחיזבאללה: האם הלחץ הצבאי באמת עובד?</div>
-        <div class="sitrep-summary">שלושה מכונים מובילים בחנו את יעילות האסטרטגיה הישראלית. המסקנות חלוקות: INSS מציג עדויות לנסיגה אסטרטגית, RUSI מזהיר מפני חוסן מוסדי, ו-CSIS מציב שאלות לגבי היום שאחרי.</div>
-        <div class="sitrep-sources">
-          <span class="sitrep-sources-label">מבוסס על מחקרים מ:</span>
-          <div class="sitrep-pills">
-            <span class="sitrep-pill">INSS</span>
-            <span class="sitrep-pill">RUSI</span>
-            <span class="sitrep-pill">CSIS</span>
+
+    <div class="sidebar-block">
+      <div class="sitrep-label">
+        <span class="sitrep-label-text">🧠 תמונת מצב</span>
+        <div class="sitrep-label-line"></div>
+      </div>
+      <a class="sitrep-card" href="sitrep-hezbollah.html">
+        <div class="sitrep-inner">
+          <span class="sitrep-type">ניתוח גיאופוליטי · שבועי</span>
+          <div class="sitrep-title">ישראל וחיזבאללה: האם הלחץ הצבאי באמת עובד?</div>
+          <div class="sitrep-summary">שלושה מכונים מובילים בחנו את יעילות האסטרטגיה הישראלית. המסקנות חלוקות: INSS מציג עדויות לנסיגה אסטרטגית, RUSI מזהיר מפני חוסן מוסדי, ו-CSIS מציב שאלות לגבי היום שאחרי.</div>
+          <div class="sitrep-sources">
+            <span class="sitrep-sources-label">מבוסס על מחקרים מ:</span>
+            <div class="sitrep-pills">
+              <span class="sitrep-pill">INSS</span>
+              <span class="sitrep-pill">RUSI</span>
+              <span class="sitrep-pill">CSIS</span>
+            </div>
+          </div>
+          <div class="sitrep-divider"></div>
+          <div class="sitrep-footer">
+            <span class="sitrep-cta">קרא את הניתוח</span>
+            <span class="sitrep-updated">יולי 2026</span>
           </div>
         </div>
-        <div class="sitrep-divider"></div>
-        <div class="sitrep-footer">
-          <span class="sitrep-cta">קרא את הניתוח</span>
-          <span class="sitrep-updated">יולי 2026</span>
-        </div>
+      </a>
+    </div>
+
+    <!-- ═══ ELECTIONS WIDGET (populated dynamically, hidden if no stories) ═══ -->
+    <div class="sidebar-block" id="election-widget-block" style="display:none;">
+      <div class="sitrep-label">
+        <span class="sitrep-label-text">🗳️ בחירות 2026</span>
+        <div class="sitrep-label-line"></div>
       </div>
-    </a>
+      <div id="election-widget-container"></div>
+      <a class="election-see-all" href="elections-2026.html">לכל כתבות הבחירות ←</a>
+    </div>
+
   </aside>
 
 </div>
@@ -241,6 +273,33 @@ fetch('/api/stories')
         '</div>' +
       '</a>';
     });
+  });
+
+// ── ELECTIONS SIDEBAR WIDGET ──
+fetch('/api/elections-2026-stories')
+  .then(r => r.json())
+  .then(stories => {
+    if (!stories.length) return; // stays hidden, block already display:none
+
+    var latest = stories[0];
+    var block = document.getElementById('election-widget-block');
+    var container = document.getElementById('election-widget-container');
+    var timeDisplay = latest.date ? timeAgo(latest.date) : '';
+
+    container.innerHTML = '<a class="election-card" href="' + latest.link + '">' +
+      '<div class="election-inner">' +
+        '<span class="election-type">' + latest.tag + '</span>' +
+        '<div class="election-title">' + latest.title + '</div>' +
+        '<div class="election-summary">' + latest.summary + '</div>' +
+        '<div class="election-divider"></div>' +
+        '<div class="election-footer">' +
+          '<span class="election-cta">קרא את הכתבה</span>' +
+          '<span class="election-updated">' + timeDisplay + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</a>';
+
+    block.style.display = 'block';
   });
 </script>
 
