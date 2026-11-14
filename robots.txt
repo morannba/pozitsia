@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tikrehev.co.il/sitemap.xml
